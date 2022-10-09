@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/hexagonal_puzzle/hexagonal_puzzle.iml" filepath="$PROJECT_DIR$/hexagonal_puzzle/hexagonal_puzzle.iml" />
+      <module fileurl="file://$PROJECT_DIR$/hexagonal_puzzle/android/hexagonal_puzzle_android.iml" filepath="$PROJECT_DIR$/hexagonal_puzzle/android/hexagonal_puzzle_android.iml" />
+    </modules>
+  </component>
+</project>
