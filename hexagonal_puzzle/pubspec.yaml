@@ -57,33 +57,204 @@ flutter:
   # the material Icons class.
   uses-material-design: true
 
-  # To add assets to your application, add an assets section, like this:
-  # assets:
-  #   - images/a_dot_burr.jpeg
-  #   - images/a_dot_ham.jpeg
-
-  # An image asset can refer to one or more resolution-specific "variants", see
-  # https://flutter.dev/assets-and-images/#resolution-aware
-
-  # For details regarding adding assets from package dependencies, see
-  # https://flutter.dev/assets-and-images/#from-packages
-
-  # To add custom fonts to your application, add a fonts section here,
-  # in this "flutter" section. Each entry in this list should have a
-  # "family" key with the font family name, and a "fonts" key with a
-  # list giving the asset and other descriptors for the font. For
-  # example:
-  # fonts:
-  #   - family: Schyler
-  #     fonts:
-  #       - asset: fonts/Schyler-Regular.ttf
-  #       - asset: fonts/Schyler-Italic.ttf
-  #         style: italic
-  #   - family: Trajan Pro
-  #     fonts:
-  #       - asset: fonts/TrajanPro.ttf
-  #       - asset: fonts/TrajanPro_Bold.ttf
-  #         weight: 700
-  #
-  # For details regarding fonts from package dependencies,
-  # see https://flutter.dev/custom-fonts/#from-packages
+  assets:
+    - assets/images/levels/large/74_Oslo_Norway.webp
+    - assets/images/levels/large/53_Osaka_Japan.webp
+    - assets/images/levels/large/8_Los_Angeles_USA.webp
+    - assets/images/levels/large/30_Melbourne_Australia.webp
+    - assets/images/levels/large/59_Copenhagen_Denmark.webp
+    - assets/images/levels/large/48_Montréal_Canada.webp
+    - assets/images/levels/large/83_Santiago_Chile.webp
+    - assets/images/levels/large/77_Auckland_New_Zealand.webp
+    - assets/images/levels/large/16_Amsterdam_Netherlands.webp
+    - assets/images/levels/large/13_Chicago_USA.webp
+    - assets/images/levels/large/54_San_Jose_USA.webp
+    - assets/images/levels/large/71_Perth_Australia.webp
+    - assets/images/levels/large/36_Seattle_USA.webp
+    - assets/images/levels/large/20_Berlin_Germany.webp
+    - assets/images/levels/large/12_Kyiv_Ukraine.webp
+    - assets/images/levels/large/99_Charlotte_USA.webp
+    - assets/images/levels/large/78_New_Orleans_USA.webp
+    - assets/images/levels/large/86_Edmonton_Canada.webp
+    - assets/images/levels/large/51_Lisbon_Portugal.webp
+    - assets/images/levels/large/24_Vienna_Austria.webp
+    - assets/images/levels/large/18_Toronto_Canada.webp
+    - assets/images/levels/large/40_Bangkok_Thailand.webp
+    - assets/images/levels/large/21_Las_Vegas_USA.webp
+    - assets/images/levels/large/5_Dubai_UAE.webp
+    - assets/images/levels/large/66_Portland_USA.webp
+    - assets/images/levels/large/3_New_York_USA.webp
+    - assets/images/levels/large/70_Athens_Greece.webp
+    - assets/images/levels/large/58_Tel_Aviv_Israel.webp
+    - assets/images/levels/large/26_Prague_Czech_Republic.webp
+    - assets/images/levels/large/85_Baltimore_USA.webp
+    - assets/images/levels/large/100_Nanjing_China.webp
+    - assets/images/levels/large/92_Mexico_City_Mexico.webp
+    - assets/images/levels/large/64_Taipei_Taiwan.webp
+    - assets/images/levels/large/25_Beijing_China.webp
+    - assets/images/levels/large/98_Seville_Spain.webp
+    - assets/images/levels/large/46_Vancouver_Canada.webp
+    - assets/images/levels/large/23_Istanbul_Turkey.webp
+    - assets/images/levels/large/14_Abu_Dhabi_UAE.webp
+    - assets/images/levels/large/57_Philadelphia_USA.webp
+    - assets/images/levels/large/60_Brussels_Belgium.webp
+    - assets/images/levels/large/45_Frankfurt_Germany.webp
+    - assets/images/levels/large/72_Helsinki_Finland.webp
+    - assets/images/levels/large/67_Hamburg_Germany.webp
+    - assets/images/levels/large/52_Naples_Italy.webp
+    - assets/images/levels/large/44_Dallas_USA.webp
+    - assets/images/levels/large/89_Adelaide_Australia.webp
+    - assets/images/levels/large/97_Tucson_USA.webp
+    - assets/images/levels/large/34_Miami_USA.webp
+    - assets/images/levels/large/69_Warsaw_Poland.webp
+    - assets/images/levels/large/80_Muscat_Oman.webp
+    - assets/images/levels/large/55_Riyadh_Saudi_Arabia.webp
+    - assets/images/levels/large/33_Dublin_Ireland.webp
+    - assets/images/levels/large/31_Boston_USA.webp
+    - assets/images/levels/large/49_Calgary_Canada.webp
+    - assets/images/levels/large/1_London_UK.webp
+    - assets/images/levels/large/62_Valencia_Spain.webp
+    - assets/images/levels/large/43_Atlanta_USA.webp
+    - assets/images/levels/large/65_Rio_de_Janeiro_Brazil.webp
+    - assets/images/levels/large/42_Seoul_South_Korea.webp
+    - assets/images/levels/large/82_Stockholm_Sweden.webp
+    - assets/images/levels/large/7_Singapore_Singapore.webp
+    - assets/images/levels/large/63_Buenos_Aires_Argentina.webp
+    - assets/images/levels/large/61_Brisbane_Australia.webp
+    - assets/images/levels/large/84_Ottawa_Canada.webp
+    - assets/images/levels/large/75_Shanghai_China.webp
+    - assets/images/levels/large/37_Budapest_Hungary.webp
+    - assets/images/levels/large/81_Nashville_USA.webp
+    - assets/images/levels/large/2_Paris_France.webp
+    - assets/images/levels/large/4_Moscow_Russia.webp
+    - assets/images/levels/large/94_Mumbai_India.webp
+    - assets/images/levels/large/88_Marseille_France.webp
+    - assets/images/levels/large/35_Zurich_Switzerland.webp
+    - assets/images/levels/large/76_Phoenix_USA.webp
+    - assets/images/levels/large/73_Minneapolis_USA.webp
+    - assets/images/levels/large/19_Sydney_Australia.webp
+    - assets/images/levels/large/50_Delhi_India.webp
+    - assets/images/levels/large/96_San_Antonio_USA.webp
+    - assets/images/levels/large/56_Denver_USA.webp
+    - assets/images/levels/large/17_St_Petersburg_Russia.webp
+    - assets/images/levels/large/41_Orlando_USA.webp
+    - assets/images/levels/large/15_San_Francisco_USA.webp
+    - assets/images/levels/large/11_Rome_Italy.webp
+    - assets/images/levels/large/93_Salt_Lake_City_USA.webp
+    - assets/images/levels/large/10_Madrid_Spain.webp
+    - assets/images/levels/large/95_Sacramento_USA.webp
+    - assets/images/levels/large/6_Tokyo_Japan.webp
+    - assets/images/levels/large/47_Austin_USA.webp
+    - assets/images/levels/large/22_Washington_DC_USA.webp
+    - assets/images/levels/large/28_San_Diego_USA.webp
+    - assets/images/levels/large/32_Houston_USA.webp
+    - assets/images/levels/large/39_Munich_Germany.webp
+    - assets/images/levels/large/38_Sao_Paulo_Brazil.webp
+    - assets/images/levels/large/90_Goteborg_Sweden.webp
+    - assets/images/levels/large/29_Hong_Kong_Hong_Kong_SAR.webp
+    - assets/images/levels/large/9_Barcelona_Spain.webp
+    - assets/images/levels/large/79_Jerusalem_Israel.webp
+    - assets/images/levels/large/27_Milan_Italy.webp
+    - assets/images/levels/large/87_Lyon_France.webp
+    - assets/images/levels/large/91_Bilbao_Spain.webp
+    - assets/images/levels/large/68_Kuwait_Kuwait.webp
+    - assets/images/levels/small/74_Oslo_Norway.webp
+    - assets/images/levels/small/53_Osaka_Japan.webp
+    - assets/images/levels/small/8_Los_Angeles_USA.webp
+    - assets/images/levels/small/30_Melbourne_Australia.webp
+    - assets/images/levels/small/59_Copenhagen_Denmark.webp
+    - assets/images/levels/small/48_Montréal_Canada.webp
+    - assets/images/levels/small/83_Santiago_Chile.webp
+    - assets/images/levels/small/77_Auckland_New_Zealand.webp
+    - assets/images/levels/small/16_Amsterdam_Netherlands.webp
+    - assets/images/levels/small/13_Chicago_USA.webp
+    - assets/images/levels/small/54_San_Jose_USA.webp
+    - assets/images/levels/small/71_Perth_Australia.webp
+    - assets/images/levels/small/36_Seattle_USA.webp
+    - assets/images/levels/small/20_Berlin_Germany.webp
+    - assets/images/levels/small/12_Kyiv_Ukraine.webp
+    - assets/images/levels/small/99_Charlotte_USA.webp
+    - assets/images/levels/small/78_New_Orleans_USA.webp
+    - assets/images/levels/small/86_Edmonton_Canada.webp
+    - assets/images/levels/small/51_Lisbon_Portugal.webp
+    - assets/images/levels/small/24_Vienna_Austria.webp
+    - assets/images/levels/small/18_Toronto_Canada.webp
+    - assets/images/levels/small/40_Bangkok_Thailand.webp
+    - assets/images/levels/small/21_Las_Vegas_USA.webp
+    - assets/images/levels/small/5_Dubai_UAE.webp
+    - assets/images/levels/small/66_Portland_USA.webp
+    - assets/images/levels/small/3_New_York_USA.webp
+    - assets/images/levels/small/70_Athens_Greece.webp
+    - assets/images/levels/small/58_Tel_Aviv_Israel.webp
+    - assets/images/levels/small/26_Prague_Czech_Republic.webp
+    - assets/images/levels/small/85_Baltimore_USA.webp
+    - assets/images/levels/small/100_Nanjing_China.webp
+    - assets/images/levels/small/92_Mexico_City_Mexico.webp
+    - assets/images/levels/small/64_Taipei_Taiwan.webp
+    - assets/images/levels/small/25_Beijing_China.webp
+    - assets/images/levels/small/98_Seville_Spain.webp
+    - assets/images/levels/small/46_Vancouver_Canada.webp
+    - assets/images/levels/small/23_Istanbul_Turkey.webp
+    - assets/images/levels/small/14_Abu_Dhabi_UAE.webp
+    - assets/images/levels/small/57_Philadelphia_USA.webp
+    - assets/images/levels/small/60_Brussels_Belgium.webp
+    - assets/images/levels/small/45_Frankfurt_Germany.webp
+    - assets/images/levels/small/72_Helsinki_Finland.webp
+    - assets/images/levels/small/67_Hamburg_Germany.webp
+    - assets/images/levels/small/52_Naples_Italy.webp
+    - assets/images/levels/small/44_Dallas_USA.webp
+    - assets/images/levels/small/89_Adelaide_Australia.webp
+    - assets/images/levels/small/97_Tucson_USA.webp
+    - assets/images/levels/small/34_Miami_USA.webp
+    - assets/images/levels/small/69_Warsaw_Poland.webp
+    - assets/images/levels/small/80_Muscat_Oman.webp
+    - assets/images/levels/small/55_Riyadh_Saudi_Arabia.webp
+    - assets/images/levels/small/33_Dublin_Ireland.webp
+    - assets/images/levels/small/31_Boston_USA.webp
+    - assets/images/levels/small/49_Calgary_Canada.webp
+    - assets/images/levels/small/1_London_UK.webp
+    - assets/images/levels/small/62_Valencia_Spain.webp
+    - assets/images/levels/small/43_Atlanta_USA.webp
+    - assets/images/levels/small/65_Rio_de_Janeiro_Brazil.webp
+    - assets/images/levels/small/42_Seoul_South_Korea.webp
+    - assets/images/levels/small/82_Stockholm_Sweden.webp
+    - assets/images/levels/small/7_Singapore_Singapore.webp
+    - assets/images/levels/small/63_Buenos_Aires_Argentina.webp
+    - assets/images/levels/small/61_Brisbane_Australia.webp
+    - assets/images/levels/small/84_Ottawa_Canada.webp
+    - assets/images/levels/small/75_Shanghai_China.webp
+    - assets/images/levels/small/37_Budapest_Hungary.webp
+    - assets/images/levels/small/81_Nashville_USA.webp
+    - assets/images/levels/small/2_Paris_France.webp
+    - assets/images/levels/small/4_Moscow_Russia.webp
+    - assets/images/levels/small/94_Mumbai_India.webp
+    - assets/images/levels/small/88_Marseille_France.webp
+    - assets/images/levels/small/35_Zurich_Switzerland.webp
+    - assets/images/levels/small/76_Phoenix_USA.webp
+    - assets/images/levels/small/73_Minneapolis_USA.webp
+    - assets/images/levels/small/19_Sydney_Australia.webp
+    - assets/images/levels/small/50_Delhi_India.webp
+    - assets/images/levels/small/96_San_Antonio_USA.webp
+    - assets/images/levels/small/56_Denver_USA.webp
+    - assets/images/levels/small/17_St_Petersburg_Russia.webp
+    - assets/images/levels/small/41_Orlando_USA.webp
+    - assets/images/levels/small/15_San_Francisco_USA.webp
+    - assets/images/levels/small/11_Rome_Italy.webp
+    - assets/images/levels/small/93_Salt_Lake_City_USA.webp
+    - assets/images/levels/small/10_Madrid_Spain.webp
+    - assets/images/levels/small/95_Sacramento_USA.webp
+    - assets/images/levels/small/6_Tokyo_Japan.webp
+    - assets/images/levels/small/47_Austin_USA.webp
+    - assets/images/levels/small/22_Washington_DC_USA.webp
+    - assets/images/levels/small/28_San_Diego_USA.webp
+    - assets/images/levels/small/32_Houston_USA.webp
+    - assets/images/levels/small/39_Munich_Germany.webp
+    - assets/images/levels/small/38_Sao_Paulo_Brazil.webp
+    - assets/images/levels/small/90_Goteborg_Sweden.webp
+    - assets/images/levels/small/29_Hong_Kong_Hong_Kong_SAR.webp
+    - assets/images/levels/small/9_Barcelona_Spain.webp
+    - assets/images/levels/small/79_Jerusalem_Israel.webp
+    - assets/images/levels/small/27_Milan_Italy.webp
+    - assets/images/levels/small/87_Lyon_France.webp
+    - assets/images/levels/small/91_Bilbao_Spain.webp
+    - assets/images/levels/small/68_Kuwait_Kuwait.webp
