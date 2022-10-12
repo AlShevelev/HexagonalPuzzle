@@ -2,502 +2,502 @@
     "levels": [
         {
             "id": 1,
-            "name_loc_code": "1_London_UK",
+            "name_loc_code": "london_uk",
             "image_name": "1_London_UK.webp"
         },
         {
             "id": 2,
-            "name_loc_code": "2_Paris_France",
+            "name_loc_code": "paris_france",
             "image_name": "2_Paris_France.webp"
         },
         {
             "id": 3,
-            "name_loc_code": "3_New_York_USA",
+            "name_loc_code": "new_york_usa",
             "image_name": "3_New_York_USA.webp"
         },
         {
             "id": 4,
-            "name_loc_code": "4_Moscow_Russia",
+            "name_loc_code": "moscow_russia",
             "image_name": "4_Moscow_Russia.webp"
         },
         {
             "id": 5,
-            "name_loc_code": "5_Dubai_UAE",
+            "name_loc_code": "dubai_uae",
             "image_name": "5_Dubai_UAE.webp"
         },
         {
             "id": 6,
-            "name_loc_code": "6_Tokyo_Japan",
+            "name_loc_code": "tokyo_japan",
             "image_name": "6_Tokyo_Japan.webp"
         },
         {
             "id": 7,
-            "name_loc_code": "7_Singapore_Singapore",
+            "name_loc_code": "singapore_singapore",
             "image_name": "7_Singapore_Singapore.webp"
         },
         {
             "id": 8,
-            "name_loc_code": "8_Los_Angeles_USA",
+            "name_loc_code": "los_angeles_usa",
             "image_name": "8_Los_Angeles_USA.webp"
         },
         {
             "id": 9,
-            "name_loc_code": "9_Barcelona_Spain",
+            "name_loc_code": "barcelona_spain",
             "image_name": "9_Barcelona_Spain.webp"
         },
         {
             "id": 10,
-            "name_loc_code": "10_Madrid_Spain",
+            "name_loc_code": "madrid_spain",
             "image_name": "10_Madrid_Spain.webp"
         },
         {
             "id": 11,
-            "name_loc_code": "11_Rome_Italy",
+            "name_loc_code": "rome_italy",
             "image_name": "11_Rome_Italy.webp"
         },
         {
             "id": 12,
-            "name_loc_code": "12_Kyiv_Ukraine",
+            "name_loc_code": "kyiv_ukraine",
             "image_name": "12_Kyiv_Ukraine.webp"
         },
         {
             "id": 13,
-            "name_loc_code": "13_Chicago_USA",
+            "name_loc_code": "chicago_usa",
             "image_name": "13_Chicago_USA.webp"
         },
         {
             "id": 14,
-            "name_loc_code": "14_Abu_Dhabi_UAE",
+            "name_loc_code": "abu_dhabi_uae",
             "image_name": "14_Abu_Dhabi_UAE.webp"
         },
         {
             "id": 15,
-            "name_loc_code": "15_San_Francisco_USA",
+            "name_loc_code": "san_francisco_usa",
             "image_name": "15_San_Francisco_USA.webp"
         },
         {
             "id": 16,
-            "name_loc_code": "16_Amsterdam_Netherlands",
+            "name_loc_code": "amsterdam_netherlands",
             "image_name": "16_Amsterdam_Netherlands.webp"
         },
         {
             "id": 17,
-            "name_loc_code": "17_St_Petersburg_Russia",
+            "name_loc_code": "st_petersburg_russia",
             "image_name": "17_St_Petersburg_Russia.webp"
         },
         {
             "id": 18,
-            "name_loc_code": "18_Toronto_Canada",
+            "name_loc_code": "toronto_canada",
             "image_name": "18_Toronto_Canada.webp"
         },
         {
             "id": 19,
-            "name_loc_code": "19_Sydney_Australia",
+            "name_loc_code": "sydney_australia",
             "image_name": "19_Sydney_Australia.webp"
         },
         {
             "id": 20,
-            "name_loc_code": "20_Berlin_Germany",
+            "name_loc_code": "berlin_germany",
             "image_name": "20_Berlin_Germany.webp"
         },
         {
             "id": 21,
-            "name_loc_code": "21_Las_Vegas_USA",
+            "name_loc_code": "las_vegas_usa",
             "image_name": "21_Las_Vegas_USA.webp"
         },
         {
             "id": 22,
-            "name_loc_code": "22_Washington_DC_USA",
+            "name_loc_code": "washington_dc_usa",
             "image_name": "22_Washington_DC_USA.webp"
         },
         {
             "id": 23,
-            "name_loc_code": "23_Istanbul_Turkey",
+            "name_loc_code": "istanbul_turkey",
             "image_name": "23_Istanbul_Turkey.webp"
         },
         {
             "id": 24,
-            "name_loc_code": "24_Vienna_Austria",
+            "name_loc_code": "vienna_austria",
             "image_name": "24_Vienna_Austria.webp"
         },
         {
             "id": 25,
-            "name_loc_code": "25_Beijing_China",
+            "name_loc_code": "beijing_china",
             "image_name": "25_Beijing_China.webp"
         },
         {
             "id": 26,
-            "name_loc_code": "26_Prague_Czech_Republic",
+            "name_loc_code": "prague_czech_republic",
             "image_name": "26_Prague_Czech_Republic.webp"
         },
         {
             "id": 27,
-            "name_loc_code": "27_Milan_Italy",
+            "name_loc_code": "milan_italy",
             "image_name": "27_Milan_Italy.webp"
         },
         {
             "id": 28,
-            "name_loc_code": "28_San_Diego_USA",
+            "name_loc_code": "san_diego_usa",
             "image_name": "28_San_Diego_USA.webp"
         },
         {
             "id": 29,
-            "name_loc_code": "29_Hong_Kong_Hong_Kong_SAR",
+            "name_loc_code": "hong_kong_hong_kong_sar",
             "image_name": "29_Hong_Kong_Hong_Kong_SAR.webp"
         },
         {
             "id": 30,
-            "name_loc_code": "30_Melbourne_Australia",
+            "name_loc_code": "melbourne_australia",
             "image_name": "30_Melbourne_Australia.webp"
         },
         {
             "id": 31,
-            "name_loc_code": "31_Boston_USA",
+            "name_loc_code": "boston_usa",
             "image_name": "31_Boston_USA.webp"
         },
         {
             "id": 32,
-            "name_loc_code": "32_Houston_USA",
+            "name_loc_code": "houston_usa",
             "image_name": "32_Houston_USA.webp"
         },
         {
             "id": 33,
-            "name_loc_code": "33_Dublin_Ireland",
+            "name_loc_code": "dublin_ireland",
             "image_name": "33_Dublin_Ireland.webp"
         },
         {
             "id": 34,
-            "name_loc_code": "34_Miami_USA",
+            "name_loc_code": "miami_usa",
             "image_name": "34_Miami_USA.webp"
         },
         {
             "id": 35,
-            "name_loc_code": "35_Zurich_Switzerland",
+            "name_loc_code": "zurich_switzerland",
             "image_name": "35_Zurich_Switzerland.webp"
         },
         {
             "id": 36,
-            "name_loc_code": "36_Seattle_USA",
+            "name_loc_code": "seattle_usa",
             "image_name": "36_Seattle_USA.webp"
         },
         {
             "id": 37,
-            "name_loc_code": "37_Budapest_Hungary",
+            "name_loc_code": "budapest_hungary",
             "image_name": "37_Budapest_Hungary.webp"
         },
         {
             "id": 38,
-            "name_loc_code": "38_Sao_Paulo_Brazil",
+            "name_loc_code": "sao_paulo_brazil",
             "image_name": "38_Sao_Paulo_Brazil.webp"
         },
         {
             "id": 39,
-            "name_loc_code": "39_Munich_Germany",
+            "name_loc_code": "munich_germany",
             "image_name": "39_Munich_Germany.webp"
         },
         {
             "id": 40,
-            "name_loc_code": "40_Bangkok_Thailand",
+            "name_loc_code": "bangkok_thailand",
             "image_name": "40_Bangkok_Thailand.webp"
         },
         {
             "id": 41,
-            "name_loc_code": "41_Orlando_USA",
+            "name_loc_code": "orlando_usa",
             "image_name": "41_Orlando_USA.webp"
         },
         {
             "id": 42,
-            "name_loc_code": "42_Seoul_South_Korea",
+            "name_loc_code": "seoul_south_korea",
             "image_name": "42_Seoul_South_Korea.webp"
         },
         {
             "id": 43,
-            "name_loc_code": "43_Atlanta_USA",
+            "name_loc_code": "atlanta_usa",
             "image_name": "43_Atlanta_USA.webp"
         },
         {
             "id": 44,
-            "name_loc_code": "44_Dallas_USA",
+            "name_loc_code": "dallas_usa",
             "image_name": "44_Dallas_USA.webp"
         },
         {
             "id": 45,
-            "name_loc_code": "45_Frankfurt_Germany",
+            "name_loc_code": "frankfurt_germany",
             "image_name": "45_Frankfurt_Germany.webp"
         },
         {
             "id": 46,
-            "name_loc_code": "46_Vancouver_Canada",
+            "name_loc_code": "vancouver_canada",
             "image_name": "46_Vancouver_Canada.webp"
         },
         {
             "id": 47,
-            "name_loc_code": "47_Austin_USA",
+            "name_loc_code": "austin_usa",
             "image_name": "47_Austin_USA.webp"
         },
         {
             "id": 48,
-            "name_loc_code": "48_Montreal_Canada",
+            "name_loc_code": "montreal_canada",
             "image_name": "48_Montreal_Canada.webp"
         },
         {
             "id": 49,
-            "name_loc_code": "49_Calgary_Canada",
+            "name_loc_code": "calgary_canada",
             "image_name": "49_Calgary_Canada.webp"
         },
         {
             "id": 50,
-            "name_loc_code": "50_Delhi_India",
+            "name_loc_code": "delhi_india",
             "image_name": "50_Delhi_India.webp"
         },
         {
             "id": 51,
-            "name_loc_code": "51_Lisbon_Portugal",
+            "name_loc_code": "lisbon_portugal",
             "image_name": "51_Lisbon_Portugal.webp"
         },
         {
             "id": 52,
-            "name_loc_code": "52_Naples_Italy",
+            "name_loc_code": "naples_italy",
             "image_name": "52_Naples_Italy.webp"
         },
         {
             "id": 53,
-            "name_loc_code": "53_Osaka_Japan",
+            "name_loc_code": "osaka_japan",
             "image_name": "53_Osaka_Japan.webp"
         },
         {
             "id": 54,
-            "name_loc_code": "54_San_Jose_USA",
+            "name_loc_code": "san_jose_usa",
             "image_name": "54_San_Jose_USA.webp"
         },
         {
             "id": 55,
-            "name_loc_code": "55_Riyadh_Saudi_Arabia",
+            "name_loc_code": "riyadh_saudi_arabia",
             "image_name": "55_Riyadh_Saudi_Arabia.webp"
         },
         {
             "id": 56,
-            "name_loc_code": "56_Denver_USA",
+            "name_loc_code": "denver_usa",
             "image_name": "56_Denver_USA.webp"
         },
         {
             "id": 57,
-            "name_loc_code": "57_Philadelphia_USA",
+            "name_loc_code": "philadelphia_usa",
             "image_name": "57_Philadelphia_USA.webp"
         },
         {
             "id": 58,
-            "name_loc_code": "58_Tel_Aviv_Israel",
+            "name_loc_code": "tel_aviv_israel",
             "image_name": "58_Tel_Aviv_Israel.webp"
         },
         {
             "id": 59,
-            "name_loc_code": "59_Copenhagen_Denmark",
+            "name_loc_code": "copenhagen_denmark",
             "image_name": "59_Copenhagen_Denmark.webp"
         },
         {
             "id": 60,
-            "name_loc_code": "60_Brussels_Belgium",
+            "name_loc_code": "brussels_belgium",
             "image_name": "60_Brussels_Belgium.webp"
         },
         {
             "id": 61,
-            "name_loc_code": "61_Brisbane_Australia",
+            "name_loc_code": "brisbane_australia",
             "image_name": "61_Brisbane_Australia.webp"
         },
         {
             "id": 62,
-            "name_loc_code": "62_Valencia_Spain",
+            "name_loc_code": "valencia_spain",
             "image_name": "62_Valencia_Spain.webp"
         },
         {
             "id": 63,
-            "name_loc_code": "63_Buenos_Aires_Argentina",
+            "name_loc_code": "buenos_aires_argentina",
             "image_name": "63_Buenos_Aires_Argentina.webp"
         },
         {
             "id": 64,
-            "name_loc_code": "64_Taipei_Taiwan",
+            "name_loc_code": "taipei_taiwan",
             "image_name": "64_Taipei_Taiwan.webp"
         },
         {
             "id": 65,
-            "name_loc_code": "65_Rio_de_Janeiro_Brazil",
+            "name_loc_code": "rio_de_janeiro_brazil",
             "image_name": "65_Rio_de_Janeiro_Brazil.webp"
         },
         {
             "id": 66,
-            "name_loc_code": "66_Portland_USA",
+            "name_loc_code": "portland_usa",
             "image_name": "66_Portland_USA.webp"
         },
         {
             "id": 67,
-            "name_loc_code": "67_Hamburg_Germany",
+            "name_loc_code": "hamburg_germany",
             "image_name": "67_Hamburg_Germany.webp"
         },
         {
             "id": 68,
-            "name_loc_code": "68_Kuwait_Kuwait",
+            "name_loc_code": "kuwait_kuwait",
             "image_name": "68_Kuwait_Kuwait.webp"
         },
         {
             "id": 69,
-            "name_loc_code": "69_Warsaw_Poland",
+            "name_loc_code": "warsaw_poland",
             "image_name": "69_Warsaw_Poland.webp"
         },
         {
             "id": 70,
-            "name_loc_code": "70_Athens_Greece",
+            "name_loc_code": "athens_greece",
             "image_name": "70_Athens_Greece.webp"
         },
         {
             "id": 71,
-            "name_loc_code": "71_Perth_Australia",
+            "name_loc_code": "perth_australia",
             "image_name": "71_Perth_Australia.webp"
         },
         {
             "id": 72,
-            "name_loc_code": "72_Helsinki_Finland",
+            "name_loc_code": "helsinki_finland",
             "image_name": "72_Helsinki_Finland.webp"
         },
         {
             "id": 73,
-            "name_loc_code": "73_Minneapolis_USA",
+            "name_loc_code": "minneapolis_usa",
             "image_name": "73_Minneapolis_USA.webp"
         },
         {
             "id": 74,
-            "name_loc_code": "74_Oslo_Norway",
+            "name_loc_code": "oslo_norway",
             "image_name": "74_Oslo_Norway.webp"
         },
         {
             "id": 75,
-            "name_loc_code": "75_Shanghai_China",
+            "name_loc_code": "shanghai_china",
             "image_name": "75_Shanghai_China.webp"
         },
         {
             "id": 76,
-            "name_loc_code": "76_Phoenix_USA",
+            "name_loc_code": "phoenix_usa",
             "image_name": "76_Phoenix_USA.webp"
         },
         {
             "id": 77,
-            "name_loc_code": "77_Auckland_New_Zealand",
+            "name_loc_code": "auckland_new_zealand",
             "image_name": "77_Auckland_New_Zealand.webp"
         },
         {
             "id": 78,
-            "name_loc_code": "78_New_Orleans_USA",
+            "name_loc_code": "new_orleans_usa",
             "image_name": "78_New_Orleans_USA.webp"
         },
         {
             "id": 79,
-            "name_loc_code": "79_Jerusalem_Israel",
+            "name_loc_code": "jerusalem_israel",
             "image_name": "79_Jerusalem_Israel.webp"
         },
         {
             "id": 80,
-            "name_loc_code": "80_Muscat_Oman",
+            "name_loc_code": "muscat_oman",
             "image_name": "80_Muscat_Oman.webp"
         },
         {
             "id": 81,
-            "name_loc_code": "81_Nashville_USA",
+            "name_loc_code": "nashville_usa",
             "image_name": "81_Nashville_USA.webp"
         },
         {
             "id": 82,
-            "name_loc_code": "82_Stockholm_Sweden",
+            "name_loc_code": "stockholm_sweden",
             "image_name": "82_Stockholm_Sweden.webp"
         },
         {
             "id": 83,
-            "name_loc_code": "83_Santiago_Chile",
+            "name_loc_code": "santiago_chile",
             "image_name": "83_Santiago_Chile.webp"
         },
         {
             "id": 84,
-            "name_loc_code": "84_Ottawa_Canada",
+            "name_loc_code": "ottawa_canada",
             "image_name": "84_Ottawa_Canada.webp"
         },
         {
             "id": 85,
-            "name_loc_code": "85_Baltimore_USA",
+            "name_loc_code": "baltimore_usa",
             "image_name": "85_Baltimore_USA.webp"
         },
         {
             "id": 86,
-            "name_loc_code": "86_Edmonton_Canada",
+            "name_loc_code": "edmonton_canada",
             "image_name": "86_Edmonton_Canada.webp"
         },
         {
             "id": 87,
-            "name_loc_code": "87_Lyon_France",
+            "name_loc_code": "lyon_france",
             "image_name": "87_Lyon_France.webp"
         },
         {
             "id": 88,
-            "name_loc_code": "88_Marseille_France",
+            "name_loc_code": "marseille_france",
             "image_name": "88_Marseille_France.webp"
         },
         {
             "id": 89,
-            "name_loc_code": "89_Adelaide_Australia",
+            "name_loc_code": "adelaide_australia",
             "image_name": "89_Adelaide_Australia.webp"
         },
         {
             "id": 90,
-            "name_loc_code": "90_Goteborg_Sweden",
+            "name_loc_code": "goteborg_sweden",
             "image_name": "90_Goteborg_Sweden.webp"
         },
         {
             "id": 91,
-            "name_loc_code": "91_Bilbao_Spain",
+            "name_loc_code": "bilbao_spain",
             "image_name": "91_Bilbao_Spain.webp"
         },
         {
             "id": 92,
-            "name_loc_code": "92_Mexico_City_Mexico",
+            "name_loc_code": "mexico_city_mexico",
             "image_name": "92_Mexico_City_Mexico.webp"
         },
         {
             "id": 93,
-            "name_loc_code": "93_Salt_Lake_City_USA",
+            "name_loc_code": "salt_lake_city_usa",
             "image_name": "93_Salt_Lake_City_USA.webp"
         },
         {
             "id": 94,
-            "name_loc_code": "94_Mumbai_India",
+            "name_loc_code": "mumbai_india",
             "image_name": "94_Mumbai_India.webp"
         },
         {
             "id": 95,
-            "name_loc_code": "95_Sacramento_USA",
+            "name_loc_code": "sacramento_usa",
             "image_name": "95_Sacramento_USA.webp"
         },
         {
             "id": 96,
-            "name_loc_code": "96_San_Antonio_USA",
+            "name_loc_code": "san_antonio_usa",
             "image_name": "96_San_Antonio_USA.webp"
         },
         {
             "id": 97,
-            "name_loc_code": "97_Tucson_USA",
+            "name_loc_code": "tucson_usa",
             "image_name": "97_Tucson_USA.webp"
         },
         {
             "id": 98,
-            "name_loc_code": "98_Seville_Spain",
+            "name_loc_code": "seville_spain",
             "image_name": "98_Seville_Spain.webp"
         },
         {
             "id": 99,
-            "name_loc_code": "99_Charlotte_USA",
+            "name_loc_code": "charlotte_usa",
             "image_name": "99_Charlotte_USA.webp"
         },
         {
             "id": 100,
-            "name_loc_code": "100_Nanjing_China",
+            "name_loc_code": "nanjing_china",
             "image_name": "100_Nanjing_China.webp"
         }
     ]
