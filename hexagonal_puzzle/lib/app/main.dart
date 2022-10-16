@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter/services.dart';
 
 import '../core/ui_kit/style/theme.dart';
 import '../features/main_menu/presentation/main_menu_page.dart';
@@ -14,12 +15,18 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.landscapeLeft,
+      DeviceOrientation.landscapeRight,
+    ]);
+    SystemChrome.setEnabledSystemUIMode(SystemUiMode.leanBack);
+
     return MaterialApp(
       title: 'Six-Sided Puzzles - Cities',
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
       theme: AppThemeFactory.defaultTheme(),
-      home: const MainMenuPage(title: 'Main menu'),
+      home: const MainMenuPage(),
     );
   }
 }

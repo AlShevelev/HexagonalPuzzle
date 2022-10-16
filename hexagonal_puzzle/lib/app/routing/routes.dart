@@ -12,9 +12,9 @@ class Routes {
 
   static PageRouteBuilder? createPageRouteBuilder(String? name) {
     switch(name) {
-      case settingsPage: return SlideLeftRoute(const SettingsPage(title :'Settings'));
-      case gameFieldPage: return SlideLeftRoute(const GameFieldPage(title: 'Game field'));
-      case helpPage: return SlideLeftRoute(const HelpPage(title: 'Help'));
+      case settingsPage: return SlideLeftRoute(const SettingsPage());
+      case gameFieldPage: return SlideLeftRoute(const GameFieldPage());
+      case helpPage: return SlideLeftRoute(const HelpPage());
       default: return null;
     }
   }

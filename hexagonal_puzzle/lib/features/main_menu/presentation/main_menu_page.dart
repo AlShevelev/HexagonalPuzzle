@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-class MainMenuPage extends StatefulWidget {
-  const MainMenuPage({Key? key, required this.title}) : super(key: key);
+import '../../../core/ui_kit/page/page_background.dart';
 
-  final String title;
+class MainMenuPage extends StatefulWidget {
+  const MainMenuPage({Key? key}) : super(key: key);
 
   @override
   State<MainMenuPage> createState() => _MainMenuPageState();
@@ -12,8 +12,11 @@ class MainMenuPage extends StatefulWidget {
 class _MainMenuPageState extends State<MainMenuPage> {
   @override
   Widget build(BuildContext context) {
-    return Text(
-      widget.title,
+    return PageBackground(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: const <Widget>[],
+      ),
     );
   }
 }

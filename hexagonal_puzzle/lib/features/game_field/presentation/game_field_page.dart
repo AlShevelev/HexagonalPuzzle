@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-class GameFieldPage extends StatefulWidget {
-  const GameFieldPage({Key? key, required this.title}) : super(key: key);
+import '../../../core/ui_kit/page/page_background.dart';
 
-  final String title;
+class GameFieldPage extends StatefulWidget {
+  const GameFieldPage({Key? key}) : super(key: key);
 
   @override
   State<GameFieldPage> createState() => _GameFieldPageState();
@@ -12,8 +12,11 @@ class GameFieldPage extends StatefulWidget {
 class _GameFieldPageState extends State<GameFieldPage> {
   @override
   Widget build(BuildContext context) {
-    return Text(
-      widget.title,
+    return PageBackground(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: const <Widget>[],
+      ),
     );
   }
 }
