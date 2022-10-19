@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 
 import '../core/ui_kit/style/theme.dart';
 import '../features/main_menu/presentation/main_menu_page.dart';
+import 'routing/routes.dart';
 
 void main() {
   runApp(const MyApp());
@@ -26,6 +27,7 @@ class MyApp extends StatelessWidget {
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
       theme: AppThemeFactory.defaultTheme(),
+      onGenerateRoute: (settings) => Routes.createPageRouteBuilder(settings.name),
       home: const MainMenuPage(),
     );
   }

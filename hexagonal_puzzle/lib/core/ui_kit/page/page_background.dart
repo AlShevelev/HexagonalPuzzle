@@ -55,7 +55,8 @@ class _PageBackgroundState extends State<PageBackground> {
 
     return CustomPaint(
       painter: PageBackgroundPainter(backgroundImage: _background),
-      child: Center(
+      child: Container(
+        constraints: const BoxConstraints.expand(),
         child: childWidget,
       ),
     );
