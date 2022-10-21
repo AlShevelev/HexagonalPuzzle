@@ -45,20 +45,19 @@ class _PageBackgroundState extends State<PageBackground> {
 
   @override
   Widget build(BuildContext context) {
-    late Widget childWidget;
-
-    if (_isBackgroundLoaded) {
-      childWidget = widget.child;
+    if(_isBackgroundLoaded) {
+      return CustomPaint(
+        painter: PageBackgroundPainter(backgroundImage: _background),
+        child: Container(
+          constraints: const BoxConstraints.expand(),
+          child: widget.child,
+        ),
+      );
     } else {
-      null;
-    }
-
-    return CustomPaint(
-      painter: PageBackgroundPainter(backgroundImage: _background),
-      child: Container(
+      return Container(
         constraints: const BoxConstraints.expand(),
-        child: childWidget,
-      ),
-    );
+        child: null,
+      );
+    }
   }
 }
