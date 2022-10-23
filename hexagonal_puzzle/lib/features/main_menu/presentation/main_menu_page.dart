@@ -1,5 +1,5 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../../app/routing/routes.dart';
 import '../../../core/ui_kit/page/page_background.dart';
@@ -28,7 +28,7 @@ class _MainMenuPageState extends State<MainMenuPage> {
             Row(
               children: [
                 StrokedText(
-                  text: AppLocalizations.of(context)!.app_title,
+                  text: tr('app_title'),
                   style: AppTypography.s24w400,
                 ),
                 const Spacer(),
