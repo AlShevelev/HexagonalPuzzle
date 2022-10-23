@@ -3,7 +3,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 class KeyValueStorage {
   SharedPreferences? _storage;
 
-  void init() async {
+  Future<void> init() async {
     _storage = await SharedPreferences.getInstance();
   }
 
@@ -19,6 +19,10 @@ class KeyValueStorage {
     _storage!.setDouble(key, value);
   }
 
+  void setString(String key, String value) {
+    _storage!.setString(key, value);
+  }
+
   int? getInt(String key) {
     return _storage!.getInt(key);
   }
@@ -29,5 +33,9 @@ class KeyValueStorage {
 
   double? getDouble(String key) {
     return _storage!.getDouble(key);
+  }
+
+  String? getString(String key) {
+    return _storage!.getString(key);
   }
 }

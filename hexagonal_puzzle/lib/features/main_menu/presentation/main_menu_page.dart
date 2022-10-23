@@ -5,6 +5,7 @@ import '../../../app/routing/routes.dart';
 import '../../../core/ui_kit/page/page_background.dart';
 import '../../../core/ui_kit/style/typography.dart';
 import '../../../core/ui_kit/text/stroked_text.dart';
+import 'widgets/level_grid.dart';
 import 'widgets/main_menu_page_app_bar.dart';
 
 class MainMenuPage extends StatefulWidget {
@@ -41,6 +42,13 @@ class _MainMenuPageState extends State<MainMenuPage> {
                 )
               ],
             ),
+            Expanded(
+              child: LevelGrid(
+                  onItemClick: (id) {
+
+                  }
+              ),
+            )
           ],
         ),
       ),

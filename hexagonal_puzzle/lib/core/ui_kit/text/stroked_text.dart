@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import '../style/colors.dart';
 
-///
 /// Text with stroke
 class StrokedText extends StatelessWidget {
   const StrokedText({

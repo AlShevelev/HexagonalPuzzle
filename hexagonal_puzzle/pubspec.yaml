@@ -38,6 +38,8 @@ flutter:
           weight: 400
 
   assets:
+    - assets/levels_description.json
+
     - assets/images/levels/large/74_Oslo_Norway.webp
     - assets/images/levels/large/53_Osaka_Japan.webp
     - assets/images/levels/large/8_Los_Angeles_USA.webp
