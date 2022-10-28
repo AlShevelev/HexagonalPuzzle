@@ -21,7 +21,10 @@ class LevelGrid extends StatefulWidget {
 
 class _LevelGridState extends State<LevelGrid> {
   late final LevelsRepository _repository;
+
   late final List<LevelDto> _levels;
+
+  late final AssetImage _loadingImage;
 
   bool _repositorySetup = false;
 
@@ -32,6 +35,8 @@ class _LevelGridState extends State<LevelGrid> {
   }
 
   void init() async {
+    _loadingImage = const AssetImage('assets/images/levels/small/empty.webp');
+
     _repository = LevelsRepository();
     await _repository.init();
 
@@ -63,6 +68,8 @@ class _LevelGridState extends State<LevelGrid> {
         itemBuilder: (BuildContext context, int index) {
           return LevelGridItem(
             level: _levels[index],
+            loadingImage: _loadingImage,
+            onItemClick: widget._onItemClick,
           );
         },
       );
