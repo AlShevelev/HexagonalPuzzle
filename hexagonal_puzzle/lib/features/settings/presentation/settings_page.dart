@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../core/ui_kit/page/page_background.dart';
+import 'widgets/settings_page_top_bar.dart';
 
 class SettingsPage extends StatefulWidget {
   const SettingsPage({Key? key}) : super(key: key);
@@ -16,9 +17,19 @@ class _SettingsPageState extends State<SettingsPage> {
       child: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: const <Widget>[
-            
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            SettingsPageTopBar(
+              onBackClick: () {
+                Navigator.of(context).pop();
+              },
+            ),
+            Expanded(
+              child: Column(
+
+              )
+            )
           ],
         ),
       ),
