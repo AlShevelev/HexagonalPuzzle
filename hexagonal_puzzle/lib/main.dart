@@ -30,7 +30,7 @@ class MyApp extends StatelessWidget {
       DeviceOrientation.landscapeLeft,
       DeviceOrientation.landscapeRight,
     ]);
-    SystemChrome.setEnabledSystemUIMode(SystemUiMode.leanBack);
+    SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky);
 
     return MaterialApp(
       title: 'Six-Sided Puzzles - Cities',
