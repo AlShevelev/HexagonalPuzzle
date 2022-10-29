@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 import '../../../../core/data/repositories/settings/settings_repository.dart';
 import '../../../../core/ui_kit/style/typography.dart';
 import '../../../../core/ui_kit/text/stroked_text.dart';
 
-class MainMenuPageAppBar extends StatefulWidget {
-  MainMenuPageAppBar({
+class MainMenuPageTopBar extends StatefulWidget {
+  MainMenuPageTopBar({
     required Function onHelpClick,
     required Function onSettingsClick,
     Key? key,
@@ -19,10 +20,10 @@ class MainMenuPageAppBar extends StatefulWidget {
   late final Function _onSettingsClick;
 
   @override
-  State<MainMenuPageAppBar> createState() => _MainMenuPageAppBarState();
+  State<MainMenuPageTopBar> createState() => _MainMenuPageTopBarState();
 }
 
-class _MainMenuPageAppBarState extends State<MainMenuPageAppBar> {
+class _MainMenuPageTopBarState extends State<MainMenuPageTopBar> {
   late final SettingsRepository _repository;
 
   bool _repositorySetup = false;
@@ -58,6 +59,11 @@ class _MainMenuPageAppBarState extends State<MainMenuPageAppBar> {
 
     return Row(
       children: [
+        StrokedText(
+          text: tr('app_title'),
+          style: AppTypography.s24w400,
+        ),
+        const Spacer(),
         GestureDetector(
           onTap: () {
             setState(() {

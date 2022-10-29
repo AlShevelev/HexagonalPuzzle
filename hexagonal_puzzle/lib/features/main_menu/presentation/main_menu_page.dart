@@ -1,12 +1,9 @@
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 import '../../../app/routing/routes.dart';
 import '../../../core/ui_kit/page/page_background.dart';
-import '../../../core/ui_kit/style/typography.dart';
-import '../../../core/ui_kit/text/stroked_text.dart';
 import 'widgets/level_grid.dart';
-import 'widgets/main_menu_page_app_bar.dart';
+import 'widgets/main_menu_page_top_bar.dart';
 
 class MainMenuPage extends StatefulWidget {
   const MainMenuPage({Key? key}) : super(key: key);
@@ -25,29 +22,16 @@ class _MainMenuPageState extends State<MainMenuPage> {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            Row(
-              children: [
-                StrokedText(
-                  text: tr('app_title'),
-                  style: AppTypography.s24w400,
-                ),
-                const Spacer(),
-                MainMenuPageAppBar(
-                  onHelpClick: () {
-                    Navigator.of(context).pushNamed(Routes.helpPage);
-                  },
-                  onSettingsClick: () {
-                    Navigator.of(context).pushNamed(Routes.settingsPage);
-                  },
-                )
-              ],
+            MainMenuPageTopBar(
+              onHelpClick: () {
+                Navigator.of(context).pushNamed(Routes.helpPage);
+              },
+              onSettingsClick: () {
+                Navigator.of(context).pushNamed(Routes.settingsPage);
+              },
             ),
             Expanded(
-              child: LevelGrid(
-                  onItemClick: (id) {
-
-                  }
-              ),
+              child: LevelGrid(onItemClick: (id) {}),
             )
           ],
         ),
