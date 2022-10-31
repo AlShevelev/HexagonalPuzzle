@@ -10,26 +10,44 @@ class SettingsRepository {
     _storage.init();
   }
 
-  void setMusicOn(bool value) async {
+  void setMusicOn(bool value) {
     _storage.setBool(SettingsKeys.musicOn, value);
   }
 
-  void setSoundOn(bool value) async {
+  void setSoundOn(bool value) {
     _storage.setBool(SettingsKeys.soundOn, value);
   }
 
-  /// 0 - small; 1 - average; 2 - large
-  void setFieldSize(int value) async {
-    _storage.setInt(SettingsKeys.fieldSize, value);
+  /// few - 0; several - 1, average - 2; large - 3
+  /// return - actual value
+  int setNumberOfPieces(int value) {
+    final int newValue;
+    if (value < 0 || value > 3) {
+      newValue = 0;
+    } else {
+      newValue = value;
+    }
+    _storage.setInt(SettingsKeys.numberOfPieces, newValue);
+
+    return newValue;
   }
 
-  /// As a percent of a total pieces number
-  void setNumberOfPermutations(double value) async {
-    _storage.setDouble(SettingsKeys.numberOfPermutations, value);
+  /// easy - 0,  quite easy - 1,  medium difficulty - 2, not so hard - 3, hard - 4
+  /// return - actual value
+  int setNumberOfPermutations(int value) {
+    final int newValue;
+    if (value < 0 || value > 4) {
+      newValue = 0;
+    } else {
+      newValue = value;
+    }
+
+    _storage.setInt(SettingsKeys.numberOfPermutations, newValue);
+    return newValue;
   }
 
-  void setRotations(bool value) async {
-    _storage.setBool(SettingsKeys.rotations, value);
+  void setPiecesTurningOn(bool value) {
+    _storage.setBool(SettingsKeys.piecesTurning, value);
   }
 
   bool getMusicOn() {
@@ -40,17 +58,17 @@ class SettingsRepository {
     return _storage.getBool(SettingsKeys.soundOn) ?? SettingsDefault.musicOn;
   }
 
-  /// 0 - small; 1 - average; 2 - large
-  int? getFieldSize() {
-    return _storage.getInt(SettingsKeys.fieldSize) ?? SettingsDefault.fieldSize;
+  /// few - 0; several - 1, average - 2; large - 3
+  int getNumberOfPieces() {
+    return _storage.getInt(SettingsKeys.numberOfPieces) ?? SettingsDefault.numberOfPieces;
   }
 
-  /// As a percent of a total pieces number
-  double getNumberOfPermutations() {
-    return _storage.getDouble(SettingsKeys.numberOfPermutations) ?? SettingsDefault.numberOfPermutations;
+  /// easy - 0,  quite easy - 1,  medium difficulty - 2, not so hard - 3, hard - 4
+  int getNumberOfPermutations() {
+    return _storage.getInt(SettingsKeys.numberOfPermutations) ?? SettingsDefault.numberOfPermutations;
   }
 
-  bool getRotations(bool value) {
-    return _storage.getBool(SettingsKeys.rotations) ?? SettingsDefault.rotations;
+  bool getPiecesTurningOn() {
+    return _storage.getBool(SettingsKeys.piecesTurning) ?? SettingsDefault.piecesTurning;
   }
 }

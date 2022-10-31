@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 
 class AppTypography {
-  static const s10w400 = TextStyle(
-      fontFamily: 'Lemon',
-      fontSize: 10.0,
-      fontWeight: FontWeight.w400
-  );
-
   static const s14w400 = TextStyle(
       fontFamily: 'Lemon',
       fontSize: 14.0,
+      fontWeight: FontWeight.w400
+  );
+
+  static const s18w400 = TextStyle(
+      fontFamily: 'Lemon',
+      fontSize: 18.0,
       fontWeight: FontWeight.w400
   );
 
@@ -19,7 +19,7 @@ class AppTypography {
       fontWeight: FontWeight.w400
   );
 
-  static const s40w400 = TextStyle(
+  static const s32w400 = TextStyle(
       fontFamily: 'Lemon',
       fontSize: 32.0,
       fontWeight: FontWeight.w400

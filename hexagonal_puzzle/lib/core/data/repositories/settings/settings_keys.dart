@@ -3,9 +3,9 @@ class SettingsKeys {
 
   static const soundOn = "SOUND_ON";
 
-  static const fieldSize = "FIELD_SIZE";
+  static const numberOfPieces = "NUMBER_OF_PIECES";
 
   static const numberOfPermutations = "NUMBER_OF_PERMUTATIONS";
 
-  static const rotations = "ROTATIONS";
+  static const piecesTurning = "PIECES_TURNING";
 }

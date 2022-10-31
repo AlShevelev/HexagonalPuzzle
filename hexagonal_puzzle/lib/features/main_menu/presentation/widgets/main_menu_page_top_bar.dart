@@ -86,7 +86,7 @@ class _MainMenuPageTopBarState extends State<MainMenuPageTopBar> {
             },
             child: const StrokedText(
               text: '?',
-              style: AppTypography.s40w400,
+              style: AppTypography.s32w400,
             ),
           ),
         ),

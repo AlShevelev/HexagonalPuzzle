@@ -3,11 +3,11 @@ class SettingsDefault {
 
   static const soundOn = true;
 
-  /// 0 - small; 1 - average; 2 - large
-  static const fieldSize = 1;
+  /// few - 0; several - 1, average - 2; large - 3
+  static const numberOfPieces = 2;
 
-  /// As a percent of a total pieces number
-  static const numberOfPermutations = 0.5;
+  /// easy - 0,  quite easy - 1,  medium difficulty - 2, not so hard - 3, hard - 4
+  static const numberOfPermutations = 2;
 
-  static const rotations = true;
+  static const piecesTurning = true;
 }
