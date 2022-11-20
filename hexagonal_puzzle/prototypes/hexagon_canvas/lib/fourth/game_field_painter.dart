@@ -1,51 +1,60 @@
 import 'package:flutter/material.dart';
 import 'dart:ui' as ui;
 
-import 'calculators/dto/piece_points_dto.dart';
-import 'image_loader/dto/load_images_result_dto.dart';
+import 'image_loader/dto/game_field_hex.dart';
+import 'image_loader/dto/game_field_model.dart';
 
 class GameFieldPainter extends CustomPainter {
-  GameFieldPainter(LoadImagesResultDto pieces /*, Listenable repaint*/) : super(/*repaint: repaint*/) {
-    _pieces = pieces;
+  GameFieldPainter(GameFieldModel model, Listenable repaint) : super(repaint: repaint) {
+    _model = model;
+
+    _inMotionHexPaint = Paint()
+      ..color = Colors.yellowAccent.withOpacity(0.5)
+      ..style = PaintingStyle.fill;
+
+    _notFixedHexPaint = Paint()
+      ..color = Colors.green
+      ..strokeWidth = 1
+      ..style = PaintingStyle.stroke;
+
+    _readyToExchangeHexPaint = Paint()
+      ..color = Colors.redAccent.withOpacity(0.5)
+      ..style = PaintingStyle.fill;
   }
 
-  late final LoadImagesResultDto _pieces;
+  late final GameFieldModel _model;
+
+  late final Paint _inMotionHexPaint;
+  late final Paint _notFixedHexPaint;
+  late final Paint _readyToExchangeHexPaint;
 
   @override
   void paint(Canvas canvas, Size size) {
     final paint = Paint();
 
-    _paintPiece(canvas, _pieces.points.leftTopCorner, _pieces.images.leftTopCorner, paint);
-    _paintPiece(canvas, _pieces.points.rightTopCorner, _pieces.images.rightTopCorner, paint);
-    _paintPiece(canvas, _pieces.points.leftBottomCorner, _pieces.images.leftBottomCorner, paint);
-    _paintPiece(canvas, _pieces.points.rightBottomCorner, _pieces.images.rightBottomCorner, paint);
-
-    for (int i = 0; i < _pieces.points.topPieces.length; i++) {
-      _paintPiece(canvas, _pieces.points.topPieces[i], _pieces.images.topPieces[i], paint);
+    for (var item in _model.fixed) {
+      _paintPiece(canvas, item.rect, item.image, paint);
     }
 
-    for (int i = 0; i < _pieces.points.bottomPieces.length; i++) {
-      _paintPiece(canvas, _pieces.points.bottomPieces[i], _pieces.images.bottomPieces[i], paint);
+    GameFieldHex? inMotionHex;
+    for (var item in _model.hexes) {
+      if(item.state == GameFieldHexState.inMotion) {
+        inMotionHex = item;
+      } else {
+        _paintHex(canvas, item, paint);
+      }
     }
 
-    for (int i = 0; i < _pieces.points.leftPieces.length; i++) {
-      _paintPiece(canvas, _pieces.points.leftPieces[i], _pieces.images.leftPieces[i], paint);
-    }
-
-    for (int i = 0; i < _pieces.points.rightPieces.length; i++) {
-      _paintPiece(canvas, _pieces.points.rightPieces[i], _pieces.images.rightPieces[i], paint);
-    }
-
-    for (int i = 0; i < _pieces.points.hexagons.length; i++) {
-      _paintPiece(canvas, _pieces.points.hexagons[i].points, _pieces.images.hexagons[i], paint, stroke: true);
+    if(inMotionHex != null) {
+      _paintHex(canvas, inMotionHex, paint);
     }
   }
 
   @override
   bool shouldRepaint(CustomPainter oldDelegate) => true;
 
-  void _paintPiece(Canvas canvas, PiecePointsDto points, ui.Image image, Paint paint, {bool stroke = false}) {
-    final Rect destRect = points.rect;
+  void _paintPiece(Canvas canvas, Rect rect, ui.Image image, Paint paint) {
+    final Rect destRect = rect;
     final Rect srcRect = Rect.fromLTWH(0, 0, destRect.width, destRect.height);
 
     canvas.drawImageRect(
@@ -54,15 +63,36 @@ class GameFieldPainter extends CustomPainter {
       destRect,
       paint,
     );
+  }
 
-    if(stroke) {
-      final path = Path()..addPolygon(points.absoluteVertexes, true);
-      final paint = Paint()
-        ..color = Colors.lightGreenAccent
-        ..strokeWidth = 1
-        ..style = PaintingStyle.stroke;
+  void _paintHex(Canvas canvas, GameFieldHex hex, Paint imagePaint) {
+    _paintPiece(canvas, hex.inMotionPoints.rect, hex.images[hex.angle]!, imagePaint);
 
-      canvas.drawPath(path, paint);
+    final Paint paint;
+
+    switch(hex.state) {
+      case GameFieldHexState.notFixed: {
+        paint = _notFixedHexPaint;
+        break;
+      }
+
+      case GameFieldHexState.inMotion: {
+        paint = _inMotionHexPaint;
+        break;
+      }
+
+      case GameFieldHexState.readyToExchange: {
+        paint = _readyToExchangeHexPaint;
+        break;
+      }
+
+      case GameFieldHexState.fixed: {
+        return;
+      }
     }
+
+    final path = Path()..addPolygon(hex.inMotionPoints.vertexes, true);
+
+    canvas.drawPath(path, paint);
   }
 }
