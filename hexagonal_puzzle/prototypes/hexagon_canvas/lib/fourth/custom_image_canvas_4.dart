@@ -36,7 +36,7 @@ class CustomImageCanvasState extends State<CustomImageCanvas4> {
     Future.delayed(const Duration(milliseconds: 500), () async {
       final RenderBox renderBox = _gameFieldWidgetKey.currentContext?.findRenderObject() as RenderBox;
 
-      _gameFieldModel = await ImageLoader().loadImages('assets/images/3.webp', renderBox.size, 9);
+      _gameFieldModel = await ImageLoader().loadImages('assets/images/3.webp', renderBox.size, 5);
 
       _repaintNotifier = RepaintNotifier();
 

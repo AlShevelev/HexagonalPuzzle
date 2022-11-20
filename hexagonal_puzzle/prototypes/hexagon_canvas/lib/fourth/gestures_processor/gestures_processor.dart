@@ -40,13 +40,38 @@ class GesturesProcessor {
       return;
     }
 
-    _model.hexes[_inMotionIndex] = _model.hexes[_inMotionIndex].copy(state: GameFieldHexState.notFixed);
+    final movedPiece = _model.hexes[_inMotionIndex];
+    if (_readyToExchangeIndex == -1) {
+      // reset position
+      _model.hexes[_inMotionIndex] = movedPiece.copy(
+        state: GameFieldHexState.notFixed,
+        inMotionPoints: movedPiece.points,
+      );
+    } else {
+      // exchange
+      final exchangingPiece = _model.hexes[_readyToExchangeIndex];
+
+      _model.hexes[_readyToExchangeIndex] = movedPiece.copy(
+          state: GameFieldHexState.notFixed,
+          points: exchangingPiece.points.copy(),
+          inMotionPoints: exchangingPiece.points.copy()
+      );
+
+      _model.hexes[_inMotionIndex] = exchangingPiece.copy(
+          state: GameFieldHexState.notFixed,
+          points: movedPiece.points.copy(),
+          inMotionPoints: movedPiece.points.copy()
+      );
+    }
+
     _inMotionIndex = -1;
+    _readyToExchangeIndex = -1;
+
     _repaintNotifier.repaint();
   }
 
   void onDrag(Offset position) {
-    if(_tryToMove(position)) {
+    if (_tryToMove(position)) {
       _tryToSelectReadyToExchange(position);
 
       _repaintNotifier.repaint();
@@ -91,8 +116,8 @@ class GesturesProcessor {
   void _tryToSelectReadyToExchange(Offset position) {
     final newReadyToExchangeIndex = _getIndexOfHitItem(position);
 
-    if(newReadyToExchangeIndex == -1 || newReadyToExchangeIndex == _inMotionIndex) {
-      if(_readyToExchangeIndex != -1) {
+    if (newReadyToExchangeIndex == -1 || newReadyToExchangeIndex == _inMotionIndex) {
+      if (_readyToExchangeIndex != -1) {
         _model.hexes[_readyToExchangeIndex] = _model.hexes[_readyToExchangeIndex].copy(state: GameFieldHexState.notFixed);
         _readyToExchangeIndex = -1;
       }
@@ -100,15 +125,15 @@ class GesturesProcessor {
       return;
     }
 
-    if(newReadyToExchangeIndex != -1) {
-      if(_readyToExchangeIndex == -1) {
+    if (newReadyToExchangeIndex != -1) {
+      if (_readyToExchangeIndex == -1) {
         _readyToExchangeIndex = newReadyToExchangeIndex;
         _model.hexes[_readyToExchangeIndex] = _model.hexes[_readyToExchangeIndex].copy(state: GameFieldHexState.readyToExchange);
 
         return;
       }
 
-      if(newReadyToExchangeIndex != _readyToExchangeIndex) {
+      if (newReadyToExchangeIndex != _readyToExchangeIndex) {
         _model.hexes[_readyToExchangeIndex] = _model.hexes[_readyToExchangeIndex].copy(state: GameFieldHexState.notFixed);
 
         _readyToExchangeIndex = newReadyToExchangeIndex;

@@ -24,8 +24,8 @@ class GameFieldHex {
   }) {
     return GameFieldHex(
       images: images ?? this.images,
-      points: points ?? this.points,
-      inMotionPoints: inMotionPoints ?? this.inMotionPoints,
+      points: points ?? this.points.copy(),
+      inMotionPoints: inMotionPoints ?? this.inMotionPoints.copy(),
       angle: angle ?? this.angle,
       state: state ?? this.state,
     );
@@ -38,6 +38,14 @@ class GameFieldHexPoints {
   final ui.Rect rect;
   final List<ui.Offset> vertexes;
   final ui.Offset center;
+
+  GameFieldHexPoints copy() {
+    return GameFieldHexPoints(
+      ui.Rect.fromLTRB(rect.left, rect.top, rect.right, rect.bottom),
+      vertexes.map((e) => ui.Offset(e.dx, e.dy)).toList(growable: false),
+      ui.Offset(center.dx, center.dy)
+    );
+  }
 }
 
 enum GameFieldHexAngle {
