@@ -71,6 +71,10 @@ class GesturesProcessor {
   }
 
   void onDrag(Offset position) {
+    if(_inMotionIndex == -1) {
+      return;
+    }
+
     if (_tryToMove(position)) {
       _tryToSelectReadyToExchange(position);
 
