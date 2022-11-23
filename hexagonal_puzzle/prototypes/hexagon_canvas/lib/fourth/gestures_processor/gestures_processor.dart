@@ -71,7 +71,7 @@ class GesturesProcessor {
   }
 
   void onDrag(Offset position) {
-    if(_inMotionIndex == -1) {
+    if (_inMotionIndex == -1) {
       return;
     }
 
@@ -80,6 +80,33 @@ class GesturesProcessor {
 
       _repaintNotifier.repaint();
     }
+  }
+
+  void onDoubleTap(Offset position) {
+    print("DOUBLE_TAB - onDoubleTap()");
+    if (_inMotionIndex != -1) {
+      return;
+    }
+
+    print("DOUBLE_TAB - _getIndexOfHitItem()");
+    final hitItemIndex = _getIndexOfHitItem(position);
+
+    if (hitItemIndex == -1) {
+      return;
+    }
+
+    print("DOUBLE_TAB - hitItem()");
+    final hitItem = _model.hexes[hitItemIndex];
+
+    final GameFieldHexAngle newAngle;
+    if (position.dx >= hitItem.points.center.dx) {
+      newAngle = _getNextClockwiseAngle(hitItem.angle);
+    } else {
+      newAngle = _getNextCounterClockwiseAngle(hitItem.angle);
+    }
+
+    _model.hexes[hitItemIndex] = hitItem.copy(angle: newAngle);
+    _repaintNotifier.repaint();
   }
 
   double _getDistance(Offset p1, Offset p2) {
@@ -145,6 +172,40 @@ class GesturesProcessor {
 
         return;
       }
+    }
+  }
+
+  GameFieldHexAngle _getNextClockwiseAngle(GameFieldHexAngle angle) {
+    switch (angle) {
+      case GameFieldHexAngle.angle0:
+        return GameFieldHexAngle.angle60;
+      case GameFieldHexAngle.angle60:
+        return GameFieldHexAngle.angle120;
+      case GameFieldHexAngle.angle120:
+        return GameFieldHexAngle.angle180;
+      case GameFieldHexAngle.angle180:
+        return GameFieldHexAngle.angle240;
+      case GameFieldHexAngle.angle240:
+        return GameFieldHexAngle.angle300;
+      case GameFieldHexAngle.angle300:
+        return GameFieldHexAngle.angle0;
+    }
+  }
+
+  GameFieldHexAngle _getNextCounterClockwiseAngle(GameFieldHexAngle angle) {
+    switch (angle) {
+      case GameFieldHexAngle.angle0:
+        return GameFieldHexAngle.angle300;
+      case GameFieldHexAngle.angle300:
+        return GameFieldHexAngle.angle240;
+      case GameFieldHexAngle.angle240:
+        return GameFieldHexAngle.angle180;
+      case GameFieldHexAngle.angle180:
+        return GameFieldHexAngle.angle120;
+      case GameFieldHexAngle.angle120:
+        return GameFieldHexAngle.angle60;
+      case GameFieldHexAngle.angle60:
+        return GameFieldHexAngle.angle0;
     }
   }
 }

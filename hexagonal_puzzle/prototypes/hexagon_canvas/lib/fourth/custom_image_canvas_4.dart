@@ -36,7 +36,7 @@ class CustomImageCanvasState extends State<CustomImageCanvas4> {
     Future.delayed(const Duration(milliseconds: 500), () async {
       final RenderBox renderBox = _gameFieldWidgetKey.currentContext?.findRenderObject() as RenderBox;
 
-      _gameFieldModel = await ImageLoader().loadImages('assets/images/3.webp', renderBox.size, 5);
+      _gameFieldModel = await ImageLoader().loadImages('assets/images/3.webp', renderBox.size, 7);
 
       _repaintNotifier = RepaintNotifier();
 
@@ -53,6 +53,12 @@ class CustomImageCanvasState extends State<CustomImageCanvas4> {
       return Padding(
         padding: const EdgeInsets.all(16.0),
         child: GestureDetector(
+          onDoubleTapDown: (TapDownDetails details) {
+            _gesturesProcessor.onDoubleTap(details.localPosition);
+          },
+          onDoubleTap: () {
+            // onDoubleTapDown() is not called if this method is not overridden
+          },
           onPanStart: (DragStartDetails details) {
             _gesturesProcessor.onDragStart(details.localPosition);
           },
