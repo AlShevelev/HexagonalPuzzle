@@ -35,18 +35,49 @@ class ImageLoader {
   }
 
   Future<Bitmap> _resizeBitmap(Bitmap source, Size targetSize) async {
-    final resized = await compute(
-      resizeBitmap,
-      [
-        source.content,
-        source.width,
-        source.height,
-        targetSize.width.toInt(),
-        targetSize.height.toInt(),
-      ],
-    );
+    final sizeFactor = targetSize.height / source.height;
+    final newSourceSize = Size(source.width * sizeFactor, targetSize.height);
 
-    return Bitmap.fromHeadless(targetSize.width.toInt(), targetSize.height.toInt(), resized);
+    if (newSourceSize.width <= targetSize.width) {
+      final resized = await compute(
+        resizeBitmap,
+        [
+          source.content,
+          source.width,
+          source.height,
+          targetSize.width.toInt(),
+          targetSize.height.toInt(),
+        ],
+      );
+
+      return Bitmap.fromHeadless(targetSize.width.toInt(), targetSize.height.toInt(), resized);
+    } else {
+      final resized = await compute(
+        resizeBitmap,
+        [
+          source.content,
+          source.width,
+          source.height,
+          newSourceSize.width.toInt(),
+          newSourceSize.height.toInt(),
+        ],
+      );
+
+      final cropped = await compute(
+        cropBitmap,
+        [
+          resized,
+          newSourceSize.width.toInt(),
+          newSourceSize.height.toInt(),
+          (newSourceSize.width - targetSize.width) ~/ 2,
+          0,
+          targetSize.width.toInt(),
+          targetSize.height.toInt(),
+        ],
+      );
+
+      return Bitmap.fromHeadless(targetSize.width.toInt(), targetSize.height.toInt(), cropped);
+    }
   }
 
   Future<GameFieldModel> _cutAllPieces(Bitmap source, GameFieldPointsDto points) async {
@@ -172,7 +203,7 @@ class ImageLoader {
 
     final result = <GameFieldHexAngle, ui.Image>{};
 
-    for(var angle in GameFieldHexAngle.values) {
+    for (var angle in GameFieldHexAngle.values) {
       var pictureRecorder = ui.PictureRecorder();
 
       final canvas = Canvas(pictureRecorder);
@@ -233,13 +264,19 @@ class ImageLoader {
   }
 
   double _getAngleInRadians(GameFieldHexAngle angle) {
-    switch(angle) {
-      case GameFieldHexAngle.angle0: return 0;
-      case GameFieldHexAngle.angle60: return 1 / 3 * math.pi;
-      case GameFieldHexAngle.angle120: return 2 / 3 * math.pi;
-      case GameFieldHexAngle.angle180: return math.pi;
-      case GameFieldHexAngle.angle240: return 4 / 3 * math.pi;
-      case GameFieldHexAngle.angle300: return 5 / 3 * math.pi;
+    switch (angle) {
+      case GameFieldHexAngle.angle0:
+        return 0;
+      case GameFieldHexAngle.angle60:
+        return 1 / 3 * math.pi;
+      case GameFieldHexAngle.angle120:
+        return 2 / 3 * math.pi;
+      case GameFieldHexAngle.angle180:
+        return math.pi;
+      case GameFieldHexAngle.angle240:
+        return 4 / 3 * math.pi;
+      case GameFieldHexAngle.angle300:
+        return 5 / 3 * math.pi;
     }
   }
 }

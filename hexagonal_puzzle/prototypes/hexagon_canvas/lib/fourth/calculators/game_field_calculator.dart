@@ -13,9 +13,9 @@ class _PriorCalculationsResult {
 }
 
 class GameFieldCalculator {
-  /// Calculates a field size, based on a source size [source] and a number of pieces in a column [pieces]
-  GameFieldPointsDto calculatePieces(Size sourceSize, int pieces) {
-    final priorCalculations = _makePriorCalculations(sourceSize, sourceSize, pieces);
+  /// Calculates a field size, based on a source size [maxCanvasSize] and a number of pieces in a column [pieces]
+  GameFieldPointsDto calculatePieces(Size maxCanvasSize, int pieces) {
+    final priorCalculations = _makePriorCalculations(maxCanvasSize, maxCanvasSize, pieces);
 
     final hex = priorCalculations.hexCalculator;
     final fieldSize = priorCalculations.gameFieldSize;
@@ -35,14 +35,17 @@ class GameFieldCalculator {
   }
 
   _PriorCalculationsResult _makePriorCalculations(Size sourceSize, Size draftSize, int pieces) {
+    final piecesInRow = _getPiecesInRow(pieces);
+    final piecesInCol = pieces;
+
     // the "a" value of a hexagon (see [HexagonMeasurementsCalculator] for explanation)
-    final a = (draftSize.width / (pieces * 2)).roundToDouble();
+    final a = (draftSize.width / (piecesInRow * 2)).roundToDouble();
     final hex = HexagonMeasurementsCalculator(a);
 
-    final gameFieldWidth = hex.width * pieces;
+    final gameFieldWidth = hex.width * piecesInRow;
 
-    final smallPieces = pieces ~/ 2;
-    final fullPieces = pieces - smallPieces;
+    final smallPieces = piecesInCol ~/ 2;
+    final fullPieces = piecesInCol - smallPieces;
 
     final gameFieldHeight = smallPieces * hex.c + fullPieces * hex.height;
 
@@ -118,6 +121,8 @@ class GameFieldCalculator {
   }
 
   List<PiecePointsDto> _calculateTopPieces(HexagonMeasurementsCalculator hex, int pieces) {
+    final piecesInRow = _getPiecesInRow(pieces);
+
     final p1 = Offset(hex.a, 0);
     final p2 = Offset(p1.dx + hex.width, 0);
 
@@ -126,7 +131,7 @@ class GameFieldCalculator {
       p2,
       Offset(p2.dx - hex.a, hex.b),
       hex,
-      pieces,
+      piecesInRow,
     );
 
     final relative = [
@@ -136,7 +141,7 @@ class GameFieldCalculator {
     ];
 
     final startRect = Rect.fromLTWH(p1.dx, p1.dy, hex.width, hex.b);
-    final rects = _calculateTopBottomRect(startRect, hex, pieces);
+    final rects = _calculateTopBottomRect(startRect, hex, piecesInRow);
 
     return List<PiecePointsDto>.generate(absolute.length, (index) {
       return PiecePointsDto(absoluteVertexes: absolute[index], relativeVertexes: relative, rect: rects[index]);
@@ -144,6 +149,8 @@ class GameFieldCalculator {
   }
 
   List<PiecePointsDto> _calculateBottomPieces(Size fieldSize, HexagonMeasurementsCalculator hex, int pieces) {
+    final piecesInRow = _getPiecesInRow(pieces);
+
     final p1 = Offset(hex.a, fieldSize.height);
     final p2 = Offset(p1.dx + hex.width, p1.dy);
 
@@ -152,7 +159,7 @@ class GameFieldCalculator {
       p2,
       Offset(p2.dx - hex.a, fieldSize.height - hex.b),
       hex,
-      pieces,
+      piecesInRow,
     );
 
     final relative = [
@@ -162,7 +169,7 @@ class GameFieldCalculator {
     ];
 
     final startRect = Rect.fromLTWH(p1.dx, p1.dy - hex.b, hex.width, hex.b);
-    final rects = _calculateTopBottomRect(startRect, hex, pieces);
+    final rects = _calculateTopBottomRect(startRect, hex, piecesInRow);
 
     return List<PiecePointsDto>.generate(absolute.length, (index) {
       return PiecePointsDto(absoluteVertexes: absolute[index], relativeVertexes: relative, rect: rects[index]);
@@ -280,6 +287,9 @@ class GameFieldCalculator {
   }
 
   List<HexagonPointsDto> _calculateHexagons(HexagonMeasurementsCalculator hex, int pieces) {
+    final piecesInRow = _getPiecesInRow(pieces);
+    final piecesInCol = pieces;
+
     final p1 = Offset(0, hex.b);
     final p2 = Offset(hex.a, 0);
     final p3 = Offset(hex.width, hex.b);
@@ -302,7 +312,7 @@ class GameFieldCalculator {
 
     final result = List<HexagonPointsDto>.empty(growable: true);
 
-    for (int row = 0; row < pieces; row++) {
+    for (int row = 0; row < piecesInCol; row++) {
       final yOffset = row * (hex.b + hex.c);
 
       final bool evenRow = row % 2 == 0;
@@ -311,9 +321,9 @@ class GameFieldCalculator {
       final int maxCol;
 
       if (evenRow) {
-        maxCol = pieces;
+        maxCol = piecesInRow;
       } else {
-        maxCol = pieces - 1;
+        maxCol = piecesInRow - 1;
       }
 
       for (int col = 0; col < maxCol; col++) {
@@ -344,5 +354,9 @@ class GameFieldCalculator {
     }
 
     return result;
+  }
+
+  int _getPiecesInRow(int pieces) {
+    return pieces + pieces ~/ 2;
   }
 }
