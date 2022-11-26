@@ -31,23 +31,33 @@ class GameFieldShaker {
 
     final hex1Copy = model.hexes[index1].copy();
 
+    final GameFieldHexState hex1State;
+    if(model.hexes[index1].isFixed(angle: angle1, points: model.hexes[index2].points)) {
+      hex1State = GameFieldHexState.fixed;
+    } else{
+      hex1State = GameFieldHexState.notFixed;
+    }
     model.hexes[index1] = model.hexes[index1].copy(
       points: model.hexes[index2].points,
       inMotionPoints: model.hexes[index2].inMotionPoints,
+      state: hex1State,
       angle: angle1
     );
 
+    final GameFieldHexState hex2State;
+    if(model.hexes[index2].isFixed(angle: angle2, points: hex1Copy.points)) {
+      hex2State = GameFieldHexState.fixed;
+    } else{
+      hex2State = GameFieldHexState.notFixed;
+    }
     model.hexes[index2] = model.hexes[index2].copy(
       points: hex1Copy.points,
       inMotionPoints: hex1Copy.inMotionPoints,
+      state: hex2State,
       angle: angle2
     );
 
-    return _isOutOfPlace(model.hexes[index1]) && _isOutOfPlace(model.hexes[index2]);
-  }
-
-  bool _isOutOfPlace(GameFieldHex hex) {
-    return hex.angle != GameFieldHexAngle.angle0 || hex.fixedCenter != hex.points.center;
+    return !model.hexes[index1].isFixed() && !model.hexes[index2].isFixed();
   }
 
   GameFieldHexAngle _getRandomAngle(bool rotation) {

@@ -35,6 +35,11 @@ class GameFieldHex {
       state: state ?? this.state,
     );
   }
+
+  bool isFixed({GameFieldHexAngle? angle, GameFieldHexPoints? points, Offset? fixedCenter}) {
+    return (angle ?? this.angle) == GameFieldHexAngle.angle0 &&
+        (points ?? this.points).center == (fixedCenter ?? this.fixedCenter);
+  }
 }
 
 class GameFieldHexPoints {
@@ -45,11 +50,8 @@ class GameFieldHexPoints {
   final ui.Offset center;
 
   GameFieldHexPoints copy() {
-    return GameFieldHexPoints(
-      ui.Rect.fromLTRB(rect.left, rect.top, rect.right, rect.bottom),
-      vertexes.map((e) => ui.Offset(e.dx, e.dy)).toList(growable: false),
-      ui.Offset(center.dx, center.dy)
-    );
+    return GameFieldHexPoints(ui.Rect.fromLTRB(rect.left, rect.top, rect.right, rect.bottom),
+        vertexes.map((e) => ui.Offset(e.dx, e.dy)).toList(growable: false), ui.Offset(center.dx, center.dy));
   }
 }
 

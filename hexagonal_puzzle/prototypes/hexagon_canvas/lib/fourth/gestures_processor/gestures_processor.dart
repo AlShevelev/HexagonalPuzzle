@@ -35,6 +35,18 @@ class GesturesProcessor {
     }
   }
 
+  void onDragging(Offset position) {
+    if (_inMotionIndex == -1) {
+      return;
+    }
+
+    if (_tryToMove(position)) {
+      _tryToSelectReadyToExchange(position);
+
+      _repaintNotifier.repaint();
+    }
+  }
+
   void onDragEnd() {
     if (_inMotionIndex == -1) {
       return;
@@ -51,35 +63,37 @@ class GesturesProcessor {
       // exchange
       final exchangingPiece = _model.hexes[_readyToExchangeIndex];
 
+      final GameFieldHexState exchangedCellState;
+      if (_model.hexes[_readyToExchangeIndex].isFixed(
+        angle: movedPiece.angle,
+        points: exchangingPiece.points,
+        fixedCenter: movedPiece.fixedCenter,
+      )) {
+        exchangedCellState = GameFieldHexState.fixed;
+      } else {
+        exchangedCellState = GameFieldHexState.notFixed;
+      }
       _model.hexes[_readyToExchangeIndex] = movedPiece.copy(
-          state: GameFieldHexState.notFixed,
-          points: exchangingPiece.points.copy(),
-          inMotionPoints: exchangingPiece.points.copy()
-      );
+          state: exchangedCellState, points: exchangingPiece.points.copy(), inMotionPoints: exchangingPiece.points.copy());
 
+      final GameFieldHexState inMotionCellState;
+      if (_model.hexes[_inMotionIndex].isFixed(
+        angle: exchangingPiece.angle,
+        points: movedPiece.points,
+        fixedCenter: exchangingPiece.fixedCenter,
+      )) {
+        inMotionCellState = GameFieldHexState.fixed;
+      } else {
+        inMotionCellState = GameFieldHexState.notFixed;
+      }
       _model.hexes[_inMotionIndex] = exchangingPiece.copy(
-          state: GameFieldHexState.notFixed,
-          points: movedPiece.points.copy(),
-          inMotionPoints: movedPiece.points.copy()
-      );
+          state: inMotionCellState, points: movedPiece.points.copy(), inMotionPoints: movedPiece.points.copy());
     }
 
     _inMotionIndex = -1;
     _readyToExchangeIndex = -1;
 
     _repaintNotifier.repaint();
-  }
-
-  void onDragging(Offset position) {
-    if (_inMotionIndex == -1) {
-      return;
-    }
-
-    if (_tryToMove(position)) {
-      _tryToSelectReadyToExchange(position);
-
-      _repaintNotifier.repaint();
-    }
   }
 
   void onDoubleTap(Offset position) {
@@ -102,7 +116,14 @@ class GesturesProcessor {
       newAngle = _getNextCounterClockwiseAngle(hitItem.angle);
     }
 
-    _model.hexes[hitItemIndex] = hitItem.copy(angle: newAngle);
+    final GameFieldHexState state;
+    if (hitItem.isFixed(angle: newAngle)) {
+      state = GameFieldHexState.fixed;
+    } else {
+      state = GameFieldHexState.notFixed;
+    }
+
+    _model.hexes[hitItemIndex] = hitItem.copy(angle: newAngle, state: state);
     _repaintNotifier.repaint();
   }
 
@@ -112,7 +133,7 @@ class GesturesProcessor {
 
   int _getIndexOfHitItem(Offset point) {
     for (var i = 0; i < _model.hexes.length; i++) {
-      if (_getDistance(_model.hexes[i].points.center, point) <= _a) {
+      if (!_model.hexes[i].isFixed() && _getDistance(_model.hexes[i].points.center, point) <= _a) {
         return i;
       }
     }

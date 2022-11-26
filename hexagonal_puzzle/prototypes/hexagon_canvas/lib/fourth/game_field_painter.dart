@@ -14,6 +14,11 @@ class GameFieldPainter extends CustomPainter {
 
     _notFixedHexPaint = Paint()
       ..color = Colors.green
+      ..strokeWidth = 2
+      ..style = PaintingStyle.stroke;
+
+    _fixedHexPaint = Paint()
+      ..color = const Color.fromARGB(255, 200, 200, 200)
       ..strokeWidth = 1
       ..style = PaintingStyle.stroke;
 
@@ -26,6 +31,7 @@ class GameFieldPainter extends CustomPainter {
 
   late final Paint _inMotionHexPaint;
   late final Paint _notFixedHexPaint;
+  late final Paint _fixedHexPaint;
   late final Paint _readyToExchangeHexPaint;
 
   @override
@@ -36,18 +42,10 @@ class GameFieldPainter extends CustomPainter {
       _paintPiece(canvas, item.rect, item.image, paint);
     }
 
-    GameFieldHex? inMotionHex;
-    for (var item in _model.hexes) {
-      if(item.state == GameFieldHexState.inMotion) {
-        inMotionHex = item;
-      } else {
-        _paintHex(canvas, item, paint);
-      }
-    }
-
-    if(inMotionHex != null) {
-      _paintHex(canvas, inMotionHex, paint);
-    }
+    _paintHexes(_model.hexes, GameFieldHexState.fixed, canvas, paint);
+    _paintHexes(_model.hexes, GameFieldHexState.notFixed, canvas, paint);
+    _paintHexes(_model.hexes, GameFieldHexState.readyToExchange, canvas, paint);
+    _paintHexes(_model.hexes, GameFieldHexState.inMotion, canvas, paint);
   }
 
   @override
@@ -63,6 +61,14 @@ class GameFieldPainter extends CustomPainter {
       destRect,
       paint,
     );
+  }
+
+  void _paintHexes(List<GameFieldHex> hexes, GameFieldHexState state, Canvas canvas, Paint paint) {
+    for (var item in _model.hexes) {
+      if(item.state == state) {
+        _paintHex(canvas, item, paint);
+      }
+    }
   }
 
   void _paintHex(Canvas canvas, GameFieldHex hex, Paint imagePaint) {
@@ -87,7 +93,8 @@ class GameFieldPainter extends CustomPainter {
       }
 
       case GameFieldHexState.fixed: {
-        return;
+        paint = _fixedHexPaint;
+        break;
       }
     }
 

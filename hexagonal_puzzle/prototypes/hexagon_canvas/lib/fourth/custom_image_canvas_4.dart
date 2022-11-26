@@ -38,7 +38,7 @@ class CustomImageCanvasState extends State<CustomImageCanvas4> {
       final RenderBox renderBox = _gameFieldWidgetKey.currentContext?.findRenderObject() as RenderBox;
 
       final draftGameFieldModel = await ImageLoader().loadImages('assets/images/4.webp', renderBox.size, 7);
-      _gameFieldModel = GameFieldShaker().shake(draftGameFieldModel, 50, true);
+      _gameFieldModel = GameFieldShaker().shake(draftGameFieldModel, 15, true);
 
       _repaintNotifier = RepaintNotifier();
 

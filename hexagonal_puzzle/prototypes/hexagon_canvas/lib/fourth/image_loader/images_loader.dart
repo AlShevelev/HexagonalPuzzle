@@ -139,7 +139,7 @@ class ImageLoader {
         inMotionPoints: resultPoints,
         angle: GameFieldHexAngle.angle0,
         fixedCenter: resultPoints.center,
-        state: GameFieldHexState.notFixed,
+        state: GameFieldHexState.fixed,
       ));
     }
 
