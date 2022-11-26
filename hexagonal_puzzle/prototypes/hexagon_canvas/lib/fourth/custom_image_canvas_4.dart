@@ -7,6 +7,7 @@ import 'gestures_processor/gestures_processor.dart';
 import 'image_loader/dto/game_field_model.dart';
 import 'image_loader/images_loader.dart';
 import 'repaint_notifier.dart';
+import 'shake/game_field_shaker.dart';
 
 class CustomImageCanvas4 extends StatefulWidget {
   const CustomImageCanvas4({Key? key}) : super(key: key);
@@ -36,7 +37,8 @@ class CustomImageCanvasState extends State<CustomImageCanvas4> {
     Future.delayed(const Duration(milliseconds: 500), () async {
       final RenderBox renderBox = _gameFieldWidgetKey.currentContext?.findRenderObject() as RenderBox;
 
-      _gameFieldModel = await ImageLoader().loadImages('assets/images/4.webp', renderBox.size, 7);
+      final draftGameFieldModel = await ImageLoader().loadImages('assets/images/4.webp', renderBox.size, 7);
+      _gameFieldModel = GameFieldShaker().shake(draftGameFieldModel, 50, true);
 
       _repaintNotifier = RepaintNotifier();
 
@@ -66,7 +68,7 @@ class CustomImageCanvasState extends State<CustomImageCanvas4> {
             _gesturesProcessor.onDragEnd();
           },
           onPanUpdate: (DragUpdateDetails details) {
-            _gesturesProcessor.onDrag(details.localPosition);
+            _gesturesProcessor.onDragging(details.localPosition);
           },
           child: CustomPaint(
             painter: GameFieldPainter(_gameFieldModel, _repaintNotifier),

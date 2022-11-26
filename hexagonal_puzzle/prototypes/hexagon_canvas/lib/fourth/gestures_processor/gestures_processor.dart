@@ -70,7 +70,7 @@ class GesturesProcessor {
     _repaintNotifier.repaint();
   }
 
-  void onDrag(Offset position) {
+  void onDragging(Offset position) {
     if (_inMotionIndex == -1) {
       return;
     }
@@ -83,19 +83,16 @@ class GesturesProcessor {
   }
 
   void onDoubleTap(Offset position) {
-    print("DOUBLE_TAB - onDoubleTap()");
     if (_inMotionIndex != -1) {
       return;
     }
 
-    print("DOUBLE_TAB - _getIndexOfHitItem()");
     final hitItemIndex = _getIndexOfHitItem(position);
 
     if (hitItemIndex == -1) {
       return;
     }
 
-    print("DOUBLE_TAB - hitItem()");
     final hitItem = _model.hexes[hitItemIndex];
 
     final GameFieldHexAngle newAngle;
