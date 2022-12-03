@@ -18,11 +18,11 @@ class SettingsRepository {
     _storage.setBool(SettingsKeys.soundOn, value);
   }
 
-  /// few - 0; several - 1, average - 2; large - 3
+  /// few - 0; several - 1, many - 2
   /// return - actual value
   int setNumberOfPieces(int value) {
     final int newValue;
-    if (value < 0 || value > 3) {
+    if (value < 0 || value > 2) {
       newValue = 0;
     } else {
       newValue = value;

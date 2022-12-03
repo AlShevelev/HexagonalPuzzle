@@ -3,7 +3,7 @@ class SettingsDefault {
 
   static const soundOn = true;
 
-  /// few - 0; several - 1, average - 2; large - 3
+  /// few - 0; several - 1, many - 2
   static const numberOfPieces = 2;
 
   /// easy - 0,  quite easy - 1,  medium difficulty - 2, not so hard - 3, hard - 4

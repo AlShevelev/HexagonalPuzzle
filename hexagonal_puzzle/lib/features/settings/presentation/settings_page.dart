@@ -184,9 +184,7 @@ class _SettingsPageState extends State<SettingsPage> {
     } else if (value == 1) {
       suffix = tr('settings_number_of_pieces_several');
     } else if (value == 2) {
-      suffix = tr('settings_number_of_pieces_average');
-    } else if (value == 3) {
-      suffix = tr('settings_number_of_pieces_large');
+      suffix = tr('settings_number_of_pieces_many');
     } else {
       suffix = '';
     }
