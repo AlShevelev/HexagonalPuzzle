@@ -7,6 +7,12 @@ class AppTypography {
       fontWeight: FontWeight.w400
   );
 
+  static const s16w400 = TextStyle(
+      fontFamily: 'Lemon',
+      fontSize: 16.0,
+      fontWeight: FontWeight.w400
+  );
+
   static const s18w400 = TextStyle(
       fontFamily: 'Lemon',
       fontSize: 18.0,

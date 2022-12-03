@@ -62,7 +62,7 @@ class _LevelGridState extends State<LevelGrid> {
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 2,
           mainAxisSpacing: 8,
-          crossAxisSpacing: 8
+          crossAxisSpacing: 16
         ),
         itemCount: _levels.length,
         itemBuilder: (BuildContext context, int index) {

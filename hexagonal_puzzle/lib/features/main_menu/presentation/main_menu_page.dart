@@ -17,7 +17,7 @@ class _MainMenuPageState extends State<MainMenuPage> {
   Widget build(BuildContext context) {
     return PageBackground(
       child: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.fromLTRB(16.0, 16.0, 16.0, 0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -31,7 +31,10 @@ class _MainMenuPageState extends State<MainMenuPage> {
               },
             ),
             Expanded(
-              child: LevelGrid(onItemClick: (id) {}),
+              child: Padding(
+                padding: const EdgeInsets.fromLTRB(0, 16.0, 0, 0),
+                child: LevelGrid(onItemClick: (id) {}),
+              ),
             )
           ],
         ),

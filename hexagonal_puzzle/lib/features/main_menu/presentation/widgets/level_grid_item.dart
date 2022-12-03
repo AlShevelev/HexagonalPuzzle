@@ -99,7 +99,7 @@ class _LevelGridItemState extends State<LevelGridItem> {
           padding: const EdgeInsets.only(top: 2.0),
           child: StrokedText(
             text: widget._level.nameLocalizationCode.tr(),
-            style: AppTypography.s14w400,
+            style: AppTypography.s16w400,
           ),
         )
       ],
