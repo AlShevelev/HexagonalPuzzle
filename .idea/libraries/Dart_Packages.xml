@@ -89,7 +89,6 @@
         <entry key="ffi">
           <value>
             <list>
-              <option value="$USER_HOME$/Library/Flutter/.pub-cache/hosted/pub.dartlang.org/ffi-2.0.1/lib" />
               <option value="$USER_HOME$/Library/Flutter/.pub-cache/hosted/pub.dartlang.org/ffi-1.2.1/lib" />
             </list>
           </value>
@@ -223,7 +222,7 @@
         <entry key="path_provider_windows">
           <value>
             <list>
-              <option value="$USER_HOME$/Library/Flutter/.pub-cache/hosted/pub.dartlang.org/path_provider_windows-2.1.3/lib" />
+              <option value="$USER_HOME$/Library/Flutter/.pub-cache/hosted/pub.dartlang.org/path_provider_windows-2.0.7/lib" />
             </list>
           </value>
         </entry>
@@ -391,7 +390,7 @@
         <entry key="win32">
           <value>
             <list>
-              <option value="$USER_HOME$/Library/Flutter/.pub-cache/hosted/pub.dartlang.org/win32-3.0.0/lib" />
+              <option value="$USER_HOME$/Library/Flutter/.pub-cache/hosted/pub.dartlang.org/win32-2.6.1/lib" />
             </list>
           </value>
         </entry>
@@ -425,7 +424,6 @@
       <root url="file://$USER_HOME$/Library/Flutter/.pub-cache/hosted/pub.dartlang.org/easy_logger-0.0.2/lib" />
       <root url="file://$USER_HOME$/Library/Flutter/.pub-cache/hosted/pub.dartlang.org/fake_async-1.3.0/lib" />
       <root url="file://$USER_HOME$/Library/Flutter/.pub-cache/hosted/pub.dartlang.org/ffi-1.2.1/lib" />
-      <root url="file://$USER_HOME$/Library/Flutter/.pub-cache/hosted/pub.dartlang.org/ffi-2.0.1/lib" />
       <root url="file://$USER_HOME$/Library/Flutter/.pub-cache/hosted/pub.dartlang.org/file-6.1.4/lib" />
       <root url="file://$USER_HOME$/Library/Flutter/.pub-cache/hosted/pub.dartlang.org/flutter_lints-2.0.1/lib" />
       <root url="file://$USER_HOME$/Library/Flutter/.pub-cache/hosted/pub.dartlang.org/flutter_svg-1.1.5/lib" />
@@ -440,7 +438,7 @@
       <root url="file://$USER_HOME$/Library/Flutter/.pub-cache/hosted/pub.dartlang.org/path_parsing-1.0.1/lib" />
       <root url="file://$USER_HOME$/Library/Flutter/.pub-cache/hosted/pub.dartlang.org/path_provider_linux-2.1.7/lib" />
       <root url="file://$USER_HOME$/Library/Flutter/.pub-cache/hosted/pub.dartlang.org/path_provider_platform_interface-2.0.5/lib" />
-      <root url="file://$USER_HOME$/Library/Flutter/.pub-cache/hosted/pub.dartlang.org/path_provider_windows-2.1.3/lib" />
+      <root url="file://$USER_HOME$/Library/Flutter/.pub-cache/hosted/pub.dartlang.org/path_provider_windows-2.0.7/lib" />
       <root url="file://$USER_HOME$/Library/Flutter/.pub-cache/hosted/pub.dartlang.org/petitparser-5.0.0/lib" />
       <root url="file://$USER_HOME$/Library/Flutter/.pub-cache/hosted/pub.dartlang.org/platform-3.1.0/lib" />
       <root url="file://$USER_HOME$/Library/Flutter/.pub-cache/hosted/pub.dartlang.org/plugin_platform_interface-2.1.3/lib" />
@@ -463,7 +461,7 @@
       <root url="file://$USER_HOME$/Library/Flutter/.pub-cache/hosted/pub.dartlang.org/test_api-0.4.9/lib" />
       <root url="file://$USER_HOME$/Library/Flutter/.pub-cache/hosted/pub.dartlang.org/tuple-2.0.0/lib" />
       <root url="file://$USER_HOME$/Library/Flutter/.pub-cache/hosted/pub.dartlang.org/vector_math-2.1.2/lib" />
-      <root url="file://$USER_HOME$/Library/Flutter/.pub-cache/hosted/pub.dartlang.org/win32-3.0.0/lib" />
+      <root url="file://$USER_HOME$/Library/Flutter/.pub-cache/hosted/pub.dartlang.org/win32-2.6.1/lib" />
       <root url="file://$USER_HOME$/Library/Flutter/.pub-cache/hosted/pub.dartlang.org/xdg_directories-0.2.0+2/lib" />
       <root url="file://$USER_HOME$/Library/Flutter/.pub-cache/hosted/pub.dartlang.org/xml-6.1.0/lib" />
       <root url="file://$USER_HOME$/Library/Flutter/bin/cache/pkg/sky_engine/lib" />
