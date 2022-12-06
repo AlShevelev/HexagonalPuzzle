@@ -10,12 +10,25 @@ class Routes {
   static const gameFieldPage = '/game_field';
   static const helpPage = '/help';
 
-  static PageRouteBuilder? createPageRouteBuilder(String? name) {
-    switch(name) {
-      case settingsPage: return SlideLeftRoute(const SettingsPage());
-      case gameFieldPage: return SlideLeftRoute(const GameFieldPage());
-      case helpPage: return SlideLeftRoute(const HelpPage());
-      default: return null;
+  static PageRouteBuilder? createPageRouteBuilder(RouteSettings settings) {
+    switch (settings.name) {
+      case settingsPage:
+        {
+          return SlideLeftRoute(const SettingsPage());
+        }
+      case gameFieldPage:
+        {
+          final levelId = settings.arguments as int;
+          return SlideLeftRoute(GameFieldPage(levelId: levelId));
+        }
+      case helpPage:
+        {
+          return SlideLeftRoute(const HelpPage());
+        }
+      default:
+        {
+          return null;
+        }
     }
   }
 }

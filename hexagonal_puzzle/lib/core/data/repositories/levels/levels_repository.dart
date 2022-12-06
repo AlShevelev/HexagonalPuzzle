@@ -18,8 +18,7 @@ class LevelsRepository {
   Future<List<LevelDto>> getAll(BuildContext context) async {
     final allCompleted = _getAllCompleted();
 
-    String allLevelsDataRaw = await DefaultAssetBundle.of(context).loadString("assets/levels_description.json");
-    final List<dynamic> allLevelsData = jsonDecode(allLevelsDataRaw);
+    final List<dynamic> allLevelsData = await _getAllLevelsRaw(context);
 
     return allLevelsData.map((e) {
       final id = e['id'];
@@ -45,6 +44,19 @@ class LevelsRepository {
     _storage.setString(_completedKey, allCompleted.join(';'));
   }
 
+  Future<LevelDto> getLevel(int id, BuildContext context) async {
+    final List<dynamic> allLevelsData = await _getAllLevelsRaw(context);
+
+    final rowItem = allLevelsData.singleWhere((element) => element['id'] == id);
+
+    return LevelDto(
+      id: id,
+      nameLocalizationCode: rowItem['name_loc_code'],
+      asset: 'assets/images/levels/large/${rowItem['image_name']}',
+      isCompleted: false
+    );
+  }
+
   /// Returns id of all completed levels
   List<int> _getAllCompleted() {
     final completedRaw = _storage.getString(_completedKey);
@@ -54,5 +66,10 @@ class LevelsRepository {
     }
 
     return completedRaw.split(';').map((e) => int.parse(e)).toList();
+  }
+
+  Future<List<dynamic>> _getAllLevelsRaw(BuildContext context) async {
+    String allLevelsDataRaw = await DefaultAssetBundle.of(context).loadString("assets/levels_description.json");
+    return jsonDecode(allLevelsDataRaw);
   }
 }

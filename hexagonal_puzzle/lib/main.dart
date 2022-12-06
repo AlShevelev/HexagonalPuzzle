@@ -38,7 +38,7 @@ class MyApp extends StatelessWidget {
       supportedLocales: context.supportedLocales,
       locale: context.locale,
       theme: AppThemeFactory.defaultTheme(),
-      onGenerateRoute: (settings) => Routes.createPageRouteBuilder(settings.name),
+      onGenerateRoute: (settings) => Routes.createPageRouteBuilder(settings),
       home: const MainMenuPage(),
     );
   }

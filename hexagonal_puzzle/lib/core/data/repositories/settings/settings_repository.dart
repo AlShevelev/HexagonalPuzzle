@@ -58,7 +58,7 @@ class SettingsRepository {
     return _storage.getBool(SettingsKeys.soundOn) ?? SettingsDefault.musicOn;
   }
 
-  /// few - 0; several - 1, average - 2; large - 3
+  /// few - 0; several - 1, many - 2
   int getNumberOfPieces() {
     return _storage.getInt(SettingsKeys.numberOfPieces) ?? SettingsDefault.numberOfPieces;
   }

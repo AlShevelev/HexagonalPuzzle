@@ -33,7 +33,9 @@ class _MainMenuPageState extends State<MainMenuPage> {
             Expanded(
               child: Padding(
                 padding: const EdgeInsets.fromLTRB(0, 16.0, 0, 0),
-                child: LevelGrid(onItemClick: (id) {}),
+                child: LevelGrid(onItemClick: (levelId) {
+                  Navigator.of(context).pushNamed(Routes.gameFieldPage, arguments: levelId);
+                }),
               ),
             )
           ],
