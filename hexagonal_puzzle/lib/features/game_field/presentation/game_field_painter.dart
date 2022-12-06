@@ -40,6 +40,9 @@ class GameFieldPainter extends CustomPainter {
   void paint(Canvas canvas, Size size) {
     final paint = Paint();
 
+    canvas.save();
+    canvas.translate(_model.gameFieldOffset.dx, _model.gameFieldOffset.dy);
+
     for (var item in _model.fixed) {
       _paintPiece(canvas, item.rect, item.image, paint);
     }
@@ -48,6 +51,9 @@ class GameFieldPainter extends CustomPainter {
     _paintHexes(_model.hexes, GameFieldHexState.notFixed, canvas, paint);
     _paintHexes(_model.hexes, GameFieldHexState.readyToExchange, canvas, paint);
     _paintHexes(_model.hexes, GameFieldHexState.inMotion, canvas, paint);
+
+    canvas.translate(-_model.gameFieldOffset.dx, -_model.gameFieldOffset.dy);
+    canvas.restore();
   }
 
   @override

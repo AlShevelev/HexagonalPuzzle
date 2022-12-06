@@ -70,11 +70,11 @@ class GameFieldViewModel extends ViewModelBase {
   }
 
   void onDoubleTap(Offset position) {
-    _gesturesProcessor.onDoubleTap(position);
+    _gesturesProcessor.onDoubleTap(position.translate(_gameFieldModel.gameFieldOffset.dx, _gameFieldModel.gameFieldOffset.dy));
   }
 
   void onDragStart(Offset position) {
-    _gesturesProcessor.onDragStart(position);
+    _gesturesProcessor.onDragStart(position.translate(_gameFieldModel.gameFieldOffset.dx, _gameFieldModel.gameFieldOffset.dy));
   }
 
   void onDragEnd() {
@@ -82,7 +82,7 @@ class GameFieldViewModel extends ViewModelBase {
   }
 
   void onDragging(Offset position) {
-    _gesturesProcessor.onDragging(position);
+    _gesturesProcessor.onDragging(position.translate(_gameFieldModel.gameFieldOffset.dx, _gameFieldModel.gameFieldOffset.dy));
   }
 
   int _getNumberOfPieces() {

@@ -27,7 +27,9 @@ class ImageLoader {
     print('Game field size: ${calculationResult.gameFieldSize.width};${calculationResult.gameFieldSize.height}');
 
     final resizedBitmap = await _resizeBitmap(assetBitmap, calculationResult.gameFieldSize);
-    return await _cutAllPieces(resizedBitmap, calculationResult, calculationResult.gameFieldSize);
+
+    final gameFieldOffset = Offset(0, (canvasSize.height - calculationResult.gameFieldSize.height) / 2);
+    return await _cutAllPieces(resizedBitmap, calculationResult, gameFieldOffset);
   }
 
   Future<Bitmap> _loadAssetBitmap(String asset) async {
@@ -85,7 +87,7 @@ class ImageLoader {
   Future<GameFieldModel> _cutAllPieces(
     Bitmap source,
     GameFieldPointsDto points,
-    Size gameFieldSize,
+    Offset gameFieldOffset,
   ) async {
     final fixed = List<GameFieldFixedPiece>.empty(growable: true);
 
@@ -113,7 +115,7 @@ class ImageLoader {
 
     final hexes = await _cutHex(source, points.hexagons);
 
-    return GameFieldModel(fixed, hexes, gameFieldSize);
+    return GameFieldModel(fixed, hexes, gameFieldOffset);
   }
 
   Future<List<GameFieldFixedPiece>> _cutFixedPieces(Bitmap source, List<PiecePointsDto> points) async {
