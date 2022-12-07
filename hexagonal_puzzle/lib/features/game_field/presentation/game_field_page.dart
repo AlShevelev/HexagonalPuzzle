@@ -1,13 +1,11 @@
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:hexagonal_puzzle/features/game_field/presentation/game_field_loader_painter.dart';
-import '../../../core/ui_kit/style/typography.dart';
-import '../../../core/ui_kit/text/stroked_text.dart';
 import '../view_model/game_field_view_model.dart';
 
 import '../../../core/ui_kit/page/page_background.dart';
 import '../view_model/model/state.dart';
-import 'game_field_painter.dart';
+import 'widgets/state_completed.dart';
+import 'widgets/state_loading.dart';
+import 'widgets/state_playing.dart';
 
 class GameFieldPage extends StatefulWidget {
   const GameFieldPage({required this.levelId, Key? key}) : super(key: key);
@@ -60,64 +58,19 @@ class _GameFieldPageState extends State<GameFieldPage> {
               switch (value.data.runtimeType) {
                 case Loading:
                   {
-                    return CustomPaint(
-                      key: _gameFieldWidgetKey,
-                      painter: GameFieldLoaderPainter(),
-                      child: Center(
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            StrokedText(
-                              text: tr('loading_in_progress'),
-                              style: AppTypography.s32w400,
-                            ),
-                          ],
-                        ),
-                      ),
-                    );
+                    return StateLoading(gameFieldWidgetKey: _gameFieldWidgetKey);
                   }
                 case Completed:
                   {
-                    return Center(
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          StrokedText(
-                            text: tr('completed'),
-                            style: AppTypography.s32w400,
-                          ),
-                        ],
-                      ),
-                    );
+                    return const StateCompleted();
                   }
                 case Playing:
                   {
                     final state = value.data as Playing;
-                    return GestureDetector(
-                      onDoubleTapDown: (TapDownDetails details) {
-                        _viewModel.onDoubleTap(details.localPosition);
-                      },
-                      onDoubleTap: () {
-                        // onDoubleTapDown() is not called if this method is not overridden
-                      },
-                      onPanStart: (DragStartDetails details) {
-                        _viewModel.onDragStart(details.localPosition);
-                      },
-                      onPanEnd: (DragEndDetails details) {
-                        _viewModel.onDragEnd();
-                      },
-                      onPanUpdate: (DragUpdateDetails details) {
-                        _viewModel.onDragging(details.localPosition);
-                      },
-                      child: CustomPaint(
-                        painter: GameFieldPainter(state.gameFieldModel, state.repaintNotifier),
-                        child: Center(
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: const <Widget>[],
-                          ),
-                        ),
-                      ),
+                    return StatePlaying(
+                      userEvents: _viewModel,
+                      model: state.gameFieldModel,
+                      repaint: state.repaintNotifier,
                     );
                   }
                 default:

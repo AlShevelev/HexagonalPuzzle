@@ -10,9 +10,10 @@ import '../core/game_field_model_processor/repaint_notifier.dart';
 import '../core/game_field_shaker/game_field_shaker.dart';
 import '../core/image_loader/dto/game_field_model.dart';
 import '../core/image_loader/images_loader.dart';
+import 'game_field_view_model_user_events.dart';
 import 'model/state.dart';
 
-class GameFieldViewModel extends ViewModelBase {
+class GameFieldViewModel extends ViewModelBase implements GameFieldViewModelUserEvents {
   GameFieldViewModel(int levelId) {
     _levelId = levelId;
   }
@@ -69,6 +70,7 @@ class GameFieldViewModel extends ViewModelBase {
     _state.close();
   }
 
+  @override
   void onDoubleTap(Offset position) {
     final isCompleted = _gesturesProcessor.onDoubleTap(position.translate(
       _gameFieldModel.gameFieldOffset.dx,
@@ -80,10 +82,12 @@ class GameFieldViewModel extends ViewModelBase {
     }
   }
 
+  @override
   void onDragStart(Offset position) {
     _gesturesProcessor.onDragStart(position.translate(_gameFieldModel.gameFieldOffset.dx, _gameFieldModel.gameFieldOffset.dy));
   }
 
+  @override
   void onDragEnd() {
     final isCompleted = _gesturesProcessor.onDragEnd();
 
@@ -92,6 +96,7 @@ class GameFieldViewModel extends ViewModelBase {
     }
   }
 
+  @override
   void onDragging(Offset position) {
     _gesturesProcessor.onDragging(position.translate(_gameFieldModel.gameFieldOffset.dx, _gameFieldModel.gameFieldOffset.dy));
   }
