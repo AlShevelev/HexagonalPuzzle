@@ -70,7 +70,14 @@ class GameFieldViewModel extends ViewModelBase {
   }
 
   void onDoubleTap(Offset position) {
-    _gesturesProcessor.onDoubleTap(position.translate(_gameFieldModel.gameFieldOffset.dx, _gameFieldModel.gameFieldOffset.dy));
+    final isCompleted = _gesturesProcessor.onDoubleTap(position.translate(
+      _gameFieldModel.gameFieldOffset.dx,
+      _gameFieldModel.gameFieldOffset.dy,
+    ));
+
+    if (isCompleted) {
+      _stateUpdate.add(Completed());
+    }
   }
 
   void onDragStart(Offset position) {
@@ -78,7 +85,11 @@ class GameFieldViewModel extends ViewModelBase {
   }
 
   void onDragEnd() {
-    _gesturesProcessor.onDragEnd();
+    final isCompleted = _gesturesProcessor.onDragEnd();
+
+    if (isCompleted) {
+      _stateUpdate.add(Completed());
+    }
   }
 
   void onDragging(Offset position) {

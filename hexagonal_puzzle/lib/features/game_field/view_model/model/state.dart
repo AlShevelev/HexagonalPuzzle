@@ -11,3 +11,5 @@ class Playing extends GameFieldState {
   final GameFieldModel gameFieldModel;
   final RepaintNotifier repaintNotifier;
 }
+
+class Completed extends GameFieldState {}

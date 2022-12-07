@@ -76,6 +76,20 @@ class _GameFieldPageState extends State<GameFieldPage> {
                       ),
                     );
                   }
+                case Completed:
+                  {
+                    return Center(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          StrokedText(
+                            text: tr('completed'),
+                            style: AppTypography.s32w400,
+                          ),
+                        ],
+                      ),
+                    );
+                  }
                 case Playing:
                   {
                     final state = value.data as Playing;
