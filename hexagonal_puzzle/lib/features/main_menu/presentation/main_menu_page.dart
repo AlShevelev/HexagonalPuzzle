@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../app/routing/routes.dart';
 import '../../../core/ui_kit/page/page_background.dart';
 import 'widgets/level_grid.dart';
-import 'widgets/main_menu_page_top_bar.dart';
+import 'widgets/main_menu_top_bar.dart';
 
 class MainMenuPage extends StatefulWidget {
   const MainMenuPage({Key? key}) : super(key: key);
@@ -22,7 +22,7 @@ class _MainMenuPageState extends State<MainMenuPage> {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            MainMenuPageTopBar(
+            MainMenuTopBar(
               onHelpClick: () {
                 Navigator.of(context).pushNamed(Routes.helpPage);
               },

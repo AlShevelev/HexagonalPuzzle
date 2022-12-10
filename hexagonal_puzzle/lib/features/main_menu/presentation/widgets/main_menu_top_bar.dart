@@ -6,8 +6,8 @@ import '../../../../core/data/repositories/settings/settings_repository.dart';
 import '../../../../core/ui_kit/style/typography.dart';
 import '../../../../core/ui_kit/text/stroked_text.dart';
 
-class MainMenuPageTopBar extends StatefulWidget {
-  MainMenuPageTopBar({
+class MainMenuTopBar extends StatefulWidget {
+  MainMenuTopBar({
     required Function onHelpClick,
     required Function onSettingsClick,
     Key? key,
@@ -20,10 +20,10 @@ class MainMenuPageTopBar extends StatefulWidget {
   late final Function _onSettingsClick;
 
   @override
-  State<MainMenuPageTopBar> createState() => _MainMenuPageTopBarState();
+  State<MainMenuTopBar> createState() => _MainMenuTopBarState();
 }
 
-class _MainMenuPageTopBarState extends State<MainMenuPageTopBar> {
+class _MainMenuTopBarState extends State<MainMenuTopBar> {
   late final SettingsRepository _repository;
 
   bool _repositorySetup = false;
