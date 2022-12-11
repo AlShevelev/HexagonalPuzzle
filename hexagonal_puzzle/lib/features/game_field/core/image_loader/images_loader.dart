@@ -115,7 +115,9 @@ class ImageLoader {
 
     final hexes = await _cutHex(source, points.hexagons);
 
-    return GameFieldModel(fixed, hexes, gameFieldOffset);
+    final ui.Image sourceImage = await source.buildImage();
+
+    return GameFieldModel(fixed, hexes, gameFieldOffset, sourceImage);
   }
 
   Future<List<GameFieldFixedPiece>> _cutFixedPieces(Bitmap source, List<PiecePointsDto> points) async {

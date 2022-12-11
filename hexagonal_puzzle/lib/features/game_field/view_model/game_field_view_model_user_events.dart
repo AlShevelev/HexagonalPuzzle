@@ -8,4 +8,6 @@ abstract class GameFieldViewModelUserEvents {
   void onDragEnd();
 
   void onDragging(Offset position);
+
+  void onHintClick();
 }

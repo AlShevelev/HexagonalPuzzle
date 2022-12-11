@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:hexagonal_puzzle/features/game_field/presentation/widgets/state/state_hint.dart';
 import '../view_model/game_field_view_model.dart';
 
 import '../../../core/ui_kit/page/page_background.dart';
 import '../view_model/model/state.dart';
-import 'widgets/state_completed.dart';
-import 'widgets/state_loading.dart';
-import 'widgets/state_playing.dart';
+import 'widgets/state/state_completed.dart';
+import 'widgets/state/state_loading.dart';
+import 'widgets/state/state_playing.dart';
 
 class GameFieldPage extends StatefulWidget {
   const GameFieldPage({required this.levelId, Key? key}) : super(key: key);
@@ -71,6 +72,15 @@ class _GameFieldPageState extends State<GameFieldPage> {
                       userEvents: _viewModel,
                       model: state.gameFieldModel,
                       repaint: state.repaintNotifier,
+                      buttonsActive: state.buttonsActive,
+                    );
+                  }
+                case Hint:
+                  {
+                    final state = value.data as Hint;
+                    return StateHint(
+                      image: state.image,
+                      offset: state.offset,
                     );
                   }
                 default:

@@ -1,28 +1,38 @@
 import 'package:flutter/material.dart';
 
-import '../../core/image_loader/dto/game_field_model.dart';
-import '../../view_model/game_field_view_model_user_events.dart';
-import '../game_field_painter.dart';
-import 'game_field_side_bar.dart';
+import '../../../core/image_loader/dto/game_field_model.dart';
+import '../../../view_model/game_field_view_model_user_events.dart';
+import '../../game_field_painter.dart';
+import '../game_field_side_bar.dart';
 
 class StatePlaying extends StatelessWidget {
   StatePlaying({
     required GameFieldViewModelUserEvents userEvents,
     required GameFieldModel model,
     required Listenable repaint,
+    required bool buttonsActive,
     Key? key,
   }) : super(key: key) {
     _userEvents = userEvents;
     _model = model;
     _repaint = repaint;
+    _buttonsActive = buttonsActive;
   }
 
   late final GameFieldViewModelUserEvents _userEvents;
   late final GameFieldModel _model;
   late final Listenable _repaint;
+  late final bool _buttonsActive;
 
   @override
   Widget build(BuildContext context) {
+    final GameFieldSideBarButtonState buttonsState;
+    if(_buttonsActive) {
+      buttonsState = GameFieldSideBarButtonState.active;
+    } else {
+      buttonsState = GameFieldSideBarButtonState.disabled;
+    }
+
     return Row(
       children: [
         Expanded(
@@ -56,8 +66,10 @@ class StatePlaying extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.fromLTRB(0, 8.0, 16.0, 8.0),
           child: GameFieldSideBar(
-            hintButtonState: GameFieldSideBarButtonState.active,
-            onHintClick: () {},
+            hintButtonState: buttonsState,
+            onHintClick: () {
+              _userEvents.onHintClick();
+            },
           ),
         )
       ],

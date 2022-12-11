@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 
 import '../../../core/data/repositories/levels/levels_repository.dart';
 import '../../../core/data/repositories/settings/settings_repository.dart';
+import '../../../core/utils/simple_stream.dart';
 import '../../../core/view_model/view_model_base.dart';
 import '../core/game_field_model_processor/game_field_model_processor.dart';
 import '../core/game_field_model_processor/repaint_notifier.dart';
@@ -27,14 +28,12 @@ class GameFieldViewModel extends ViewModelBase implements GameFieldViewModelUser
   late final RepaintNotifier _repaintNotifier;
   late final GameFieldModelProcessor _gesturesProcessor;
 
-  final StreamController<GameFieldState> _state = StreamController<GameFieldState>();
+  final SimpleStream<GameFieldState> _state = SimpleStream<GameFieldState>();
 
-  Sink<GameFieldState> get _stateUpdate => _state.sink;
-
-  Stream<GameFieldState> get state => _state.stream;
+  Stream<GameFieldState> get state => _state.output;
 
   Future<void> init() async {
-    _stateUpdate.add(Loading());
+    _state.update(Loading());
 
     _settingsRepository = SettingsRepository();
     await _settingsRepository.init();
@@ -62,7 +61,7 @@ class GameFieldViewModel extends ViewModelBase implements GameFieldViewModelUser
 
     _gesturesProcessor = GameFieldModelProcessor(_gameFieldModel, _repaintNotifier);
 
-    _stateUpdate.add(Playing(_gameFieldModel, _repaintNotifier));
+    _state.update(Playing(gameFieldModel: _gameFieldModel, repaintNotifier: _repaintNotifier, buttonsActive: true));
   }
 
   @override
@@ -78,27 +77,41 @@ class GameFieldViewModel extends ViewModelBase implements GameFieldViewModelUser
     ));
 
     if (isCompleted) {
-      _stateUpdate.add(Completed());
+      _state.update(Completed());
     }
   }
 
   @override
   void onDragStart(Offset position) {
+    _state.update((_state.current as Playing).setButtonsState(false));
     _gesturesProcessor.onDragStart(position.translate(_gameFieldModel.gameFieldOffset.dx, _gameFieldModel.gameFieldOffset.dy));
   }
 
   @override
   void onDragEnd() {
+    _state.update((_state.current as Playing).setButtonsState(true));
+
     final isCompleted = _gesturesProcessor.onDragEnd();
 
     if (isCompleted) {
-      _stateUpdate.add(Completed());
+      _state.update(Completed());
     }
   }
 
   @override
   void onDragging(Offset position) {
     _gesturesProcessor.onDragging(position.translate(_gameFieldModel.gameFieldOffset.dx, _gameFieldModel.gameFieldOffset.dy));
+  }
+
+  @override
+  void onHintClick() {
+    final GameFieldState oldState = _state.current!;
+
+    _state.update(Hint(_gameFieldModel.gameFieldImage, _gameFieldModel.gameFieldOffset));
+
+    Future.delayed(const Duration(milliseconds: 2000), () async {
+      _state.update(oldState);
+    });
   }
 
   int _getNumberOfPieces() {

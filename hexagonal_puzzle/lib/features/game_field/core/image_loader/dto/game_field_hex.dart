@@ -1,5 +1,4 @@
 import 'dart:ui' as ui;
-import 'dart:ui';
 
 class GameFieldHex {
   GameFieldHex({
@@ -15,7 +14,7 @@ class GameFieldHex {
   final GameFieldHexPoints points;
   final GameFieldHexPoints inMotionPoints;
   final GameFieldHexAngle angle;
-  final Offset fixedCenter;
+  final ui.Offset fixedCenter;
   final GameFieldHexState state;
 
   GameFieldHex copy({
@@ -23,7 +22,7 @@ class GameFieldHex {
     GameFieldHexPoints? points,
     GameFieldHexPoints? inMotionPoints,
     GameFieldHexAngle? angle,
-    Offset? fixedCenter,
+    ui.Offset? fixedCenter,
     GameFieldHexState? state,
   }) {
     return GameFieldHex(
@@ -31,12 +30,12 @@ class GameFieldHex {
       points: points ?? this.points.copy(),
       inMotionPoints: inMotionPoints ?? this.inMotionPoints.copy(),
       angle: angle ?? this.angle,
-      fixedCenter: fixedCenter ?? Offset(this.fixedCenter.dx, this.fixedCenter.dy),
+      fixedCenter: fixedCenter ?? ui.Offset(this.fixedCenter.dx, this.fixedCenter.dy),
       state: state ?? this.state,
     );
   }
 
-  bool isFixed({GameFieldHexAngle? angle, GameFieldHexPoints? points, Offset? fixedCenter}) {
+  bool isFixed({GameFieldHexAngle? angle, GameFieldHexPoints? points, ui.Offset? fixedCenter}) {
     return (angle ?? this.angle) == GameFieldHexAngle.angle0 &&
         (points ?? this.points).center == (fixedCenter ?? this.fixedCenter);
   }
