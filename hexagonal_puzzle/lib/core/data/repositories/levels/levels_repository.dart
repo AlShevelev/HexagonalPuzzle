@@ -32,14 +32,14 @@ class LevelsRepository {
     }).toList();
   }
 
-  void markAsCompleted(int id) async {
+  void markAsCompleted(int levelId) {
     final allCompleted = _getAllCompleted();
 
-    if(allCompleted.contains(id)) {
+    if(allCompleted.contains(levelId)) {
       return;
     }
 
-    allCompleted.add(id);
+    allCompleted.add(levelId);
 
     _storage.setString(_completedKey, allCompleted.join(';'));
   }
@@ -62,10 +62,10 @@ class LevelsRepository {
     final completedRaw = _storage.getString(_completedKey);
 
     if (completedRaw == null) {
-      return List.empty();
+      return List.empty(growable: true);
     }
 
-    return completedRaw.split(';').map((e) => int.parse(e)).toList();
+    return completedRaw.split(';').map((e) => int.parse(e)).toList(growable: true);
   }
 
   Future<List<dynamic>> _getAllLevelsRaw(BuildContext context) async {

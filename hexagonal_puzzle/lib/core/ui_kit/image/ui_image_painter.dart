@@ -2,10 +2,11 @@ import 'dart:ui' as ui;
 import 'package:flutter/material.dart';
 
 class UIImagePainter extends CustomPainter {
-  UIImagePainter(this.image, this.offset);
+  UIImagePainter({required this.image, required this.offset, required this.showOverlay});
 
   final ui.Image image;
   final ui.Offset offset;
+  final bool showOverlay;
 
   @override
   void paint(Canvas canvas, Size size) {
@@ -25,9 +26,10 @@ class UIImagePainter extends CustomPainter {
       Paint(),
     );
 
-    final overlayPaint = Paint()
-      ..color = Colors.white.withAlpha(150);
-    canvas.drawRect(drawRect, overlayPaint);
+    if (showOverlay) {
+      final overlayPaint = Paint()..color = Colors.white.withAlpha(150);
+      canvas.drawRect(drawRect, overlayPaint);
+    }
 
     canvas.translate(-offset.dx, -offset.dy);
     canvas.restore();

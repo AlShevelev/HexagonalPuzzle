@@ -22,7 +22,9 @@ class GameFieldModelProcessor {
   late final GameFieldModel _model;
   late final RepaintNotifier _repaintNotifier;
 
-  void onDragStart(Offset position) {
+  void onDragStart(Offset screenPosition) {
+    final position = screenPosition.translate(-_model.gameFieldOffset.dx * 2, -_model.gameFieldOffset.dy * 2);
+
     if (_inMotionIndex != -1) {
       return;
     }
@@ -35,7 +37,9 @@ class GameFieldModelProcessor {
     }
   }
 
-  void onDragging(Offset position) {
+  void onDragging(Offset screenPosition) {
+    final position = screenPosition.translate(-_model.gameFieldOffset.dx * 2, -_model.gameFieldOffset.dy * 2);
+
     if (_inMotionIndex == -1) {
       return;
     }
@@ -100,7 +104,9 @@ class GameFieldModelProcessor {
   }
 
   /// The result is 'true' if the level is completed
-  bool onDoubleTap(Offset position) {
+  bool onDoubleTap(Offset screenPosition) {
+    final position = screenPosition.translate(-_model.gameFieldOffset.dx * 2, -_model.gameFieldOffset.dy * 2);
+
     if (_inMotionIndex != -1) {
       return false;
     }

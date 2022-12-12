@@ -63,7 +63,12 @@ class _GameFieldPageState extends State<GameFieldPage> {
                   }
                 case Completed:
                   {
-                    return const StateCompleted();
+                    final state = value.data as Completed;
+                    return StateCompleted(
+                      image: state.image,
+                      offset: state.offset,
+                      showLabel: state.showLabel,
+                    );
                   }
                 case Playing:
                   {

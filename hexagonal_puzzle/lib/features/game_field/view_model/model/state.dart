@@ -19,7 +19,17 @@ class Playing extends GameFieldState {
   }
 }
 
-class Completed extends GameFieldState {}
+class Completed extends GameFieldState {
+  Completed({required this.image, required this.offset, required this.showLabel});
+
+  final ui.Image image;
+  final ui.Offset offset;
+  final bool showLabel;
+
+  Completed setLabelVisibility(bool show) {
+    return Completed(image: image, offset: offset, showLabel: show);
+  }
+}
 
 class Hint extends GameFieldState {
   Hint(this.image, this.offset);

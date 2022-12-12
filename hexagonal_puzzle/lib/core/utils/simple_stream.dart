@@ -12,8 +12,10 @@ class SimpleStream<T> {
   T? get current => _currentValue;
 
   void update(T value) {
-    _currentValue = value;
-    _input.add(value);
+    if (!_stream.isClosed) {
+      _currentValue = value;
+      _input.add(value);
+    }
   }
 
   void close() {

@@ -40,7 +40,7 @@ class _LevelGridState extends State<LevelGrid> {
     _repository = LevelsRepository();
     await _repository.init();
 
-    if (mounted) {
+      if (mounted) {
       _levels = await _repository.getAll(context);
     } else {
       _levels = List.empty();

@@ -28,7 +28,10 @@ class ImageLoader {
 
     final resizedBitmap = await _resizeBitmap(assetBitmap, calculationResult.gameFieldSize);
 
-    final gameFieldOffset = Offset(0, (canvasSize.height - calculationResult.gameFieldSize.height) / 2);
+    final gameFieldOffset = Offset(
+      (canvasSize.width - calculationResult.gameFieldSize.width) / 2,
+      (canvasSize.height - calculationResult.gameFieldSize.height) / 2,
+    );
     return await _cutAllPieces(resizedBitmap, calculationResult, gameFieldOffset);
   }
 

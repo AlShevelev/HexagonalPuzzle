@@ -13,24 +13,30 @@ class StateHint extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Expanded(
-          child: CustomPaint(
-            painter: UIImagePainter(image, offset),
+    return WillPopScope(
+      onWillPop: () async {
+        return false;
+      },
+      child: Row(
+        children: [
+          Expanded(
+              child: CustomPaint(
+            painter: UIImagePainter(image: image, offset: offset, showOverlay: true),
             child: Column(
               children: const [],
             ),
+          )),
+          Padding(
+            padding: const EdgeInsets.fromLTRB(0, 8.0, 16.0, 8.0),
+            child: GameFieldSideBar(
+              hintButtonState: GameFieldSideBarButtonState.disabled,
+              onHintClick: () {},
+              closeButtonState: GameFieldSideBarButtonState.disabled,
+              onCloseClick: () {},
+            ),
           )
-        ),
-        Padding(
-          padding: const EdgeInsets.fromLTRB(0, 8.0, 16.0, 8.0),
-          child: GameFieldSideBar(
-            hintButtonState: GameFieldSideBarButtonState.disabled,
-            onHintClick: () {},
-          ),
-        )
-      ],
+        ],
+      ),
     );
   }
 }

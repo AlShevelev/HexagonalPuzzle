@@ -77,7 +77,7 @@ class GameFieldViewModel extends ViewModelBase implements GameFieldViewModelUser
     ));
 
     if (isCompleted) {
-      _state.update(Completed());
+      _complete();
     }
   }
 
@@ -94,7 +94,7 @@ class GameFieldViewModel extends ViewModelBase implements GameFieldViewModelUser
     final isCompleted = _gesturesProcessor.onDragEnd();
 
     if (isCompleted) {
-      _state.update(Completed());
+      _complete();
     }
   }
 
@@ -129,5 +129,21 @@ class GameFieldViewModel extends ViewModelBase implements GameFieldViewModelUser
 
   int _getPermutationsCount(int totalPieces) {
     return ((_settingsRepository.getNumberOfPermutations() + 1) * 0.2 * totalPieces).toInt();
+  }
+
+  void _complete() {
+    final completedState = Completed(
+      image: _gameFieldModel.gameFieldImage,
+      offset: _gameFieldModel.gameFieldOffset,
+      showLabel: true,
+    );
+
+    _state.update(completedState);
+
+    _levelsRepository.markAsCompleted(_levelId);
+
+    Future.delayed(const Duration(milliseconds: 2000), () async {
+      _state.update(completedState.setLabelVisibility(false));
+    });
   }
 }
