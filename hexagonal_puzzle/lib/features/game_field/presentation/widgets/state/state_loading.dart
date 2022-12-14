@@ -46,6 +46,7 @@ class StateLoading extends StatelessWidget {
               onHintClick: () {},
               closeButtonState: GameFieldSideBarButtonState.disabled,
               onCloseClick: () {},
+              completeness: 0.0,
             ),
           )
         ],

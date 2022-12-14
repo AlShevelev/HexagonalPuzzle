@@ -53,6 +53,7 @@ class StateCompleted extends StatelessWidget {
               onCloseClick: () {
                 Navigator.of(context).pop();
               },
+              completeness: 1.0,
             ),
           )
         ],

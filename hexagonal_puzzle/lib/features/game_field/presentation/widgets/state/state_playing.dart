@@ -1,6 +1,8 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
+import '../../../../../core/ui_kit/style/typography.dart';
+import '../../../../../core/ui_kit/text/stroked_text.dart';
 import '../../../core/image_loader/dto/game_field_model.dart';
 import '../../../view_model/game_field_view_model_user_events.dart';
 import '../../game_field_painter.dart';
@@ -12,18 +14,21 @@ class StatePlaying extends StatelessWidget {
     required GameFieldModel model,
     required Listenable repaint,
     required bool buttonsActive,
+    required double completeness,
     Key? key,
   }) : super(key: key) {
     _userEvents = userEvents;
     _model = model;
     _repaint = repaint;
     _buttonsActive = buttonsActive;
+    _completeness = completeness;
   }
 
   late final GameFieldViewModelUserEvents _userEvents;
   late final GameFieldModel _model;
   late final Listenable _repaint;
   late final bool _buttonsActive;
+  late final double _completeness;
 
   @override
   Widget build(BuildContext context) {
@@ -90,6 +95,7 @@ class StatePlaying extends StatelessWidget {
                   Navigator.of(context).pop();
                 }
               },
+              completeness: _completeness,
             ),
           )
         ],
@@ -101,20 +107,28 @@ class StatePlaying extends StatelessWidget {
     return (await showDialog(
           context: context,
           builder: (context) => AlertDialog(
-            content: Text(tr('game_field_interrupt_question')),
+            actionsAlignment: MainAxisAlignment.center,
+            shape: const RoundedRectangleBorder(
+              borderRadius: BorderRadius.all(Radius.circular(8.0)),
+            ),
+            backgroundColor: Colors.white.withOpacity(0.5),
+            content: StrokedText(
+              text: tr('game_field_interrupt_question'),
+              style: AppTypography.s24w400,
+            ),
             actions: <Widget>[
-              Container(
-                color: Colors.red,
-                child: TextButton(
-                  onPressed: () => Navigator.of(context).pop(false),
-                  child: Text(tr('general_no')),
+              TextButton(
+                onPressed: () => Navigator.of(context).pop(false),
+                child: StrokedText(
+                  text: tr('general_no'),
+                  style: AppTypography.s24w400,
                 ),
               ),
-              Container(
-                color: Colors.red,
-                child: TextButton(
-                  onPressed: () => Navigator.of(context).pop(true),
-                  child: Text(tr('general_yes')),
+              TextButton(
+                onPressed: () => Navigator.of(context).pop(true),
+                child: StrokedText(
+                  text: tr('general_yes'),
+                  style: AppTypography.s24w400,
                 ),
               ),
             ],

@@ -78,6 +78,7 @@ class _GameFieldPageState extends State<GameFieldPage> {
                       model: state.gameFieldModel,
                       repaint: state.repaintNotifier,
                       buttonsActive: state.buttonsActive,
+                      completeness: state.completeness,
                     );
                   }
                 case Hint:
@@ -86,6 +87,7 @@ class _GameFieldPageState extends State<GameFieldPage> {
                     return StateHint(
                       image: state.image,
                       offset: state.offset,
+                      completeness: state.completeness,
                     );
                   }
                 default:

@@ -52,9 +52,9 @@ class GameFieldModelProcessor {
   }
 
   /// The result is 'true' if the level is completed
-  bool onDragEnd() {
+  double onDragEnd() {
     if (_inMotionIndex == -1) {
-      return false;
+      return getCompleteness();
     }
 
     final movedPiece = _model.hexes[_inMotionIndex];
@@ -100,21 +100,21 @@ class GameFieldModelProcessor {
 
     _repaintNotifier.repaint();
 
-    return _checkIsCompleted();
+    return getCompleteness();
   }
 
   /// The result is 'true' if the level is completed
-  bool onDoubleTap(Offset screenPosition) {
+  double onDoubleTap(Offset screenPosition) {
     final position = screenPosition.translate(-_model.gameFieldOffset.dx * 2, -_model.gameFieldOffset.dy * 2);
 
     if (_inMotionIndex != -1) {
-      return false;
+      return getCompleteness();
     }
 
     final hitItemIndex = _getIndexOfHitItem(position);
 
     if (hitItemIndex == -1) {
-      return false;
+      return getCompleteness();
     }
 
     final hitItem = _model.hexes[hitItemIndex];
@@ -136,7 +136,11 @@ class GameFieldModelProcessor {
     _model.hexes[hitItemIndex] = hitItem.copy(angle: newAngle, state: state);
     _repaintNotifier.repaint();
 
-    return _checkIsCompleted();
+    return getCompleteness();
+  }
+
+  double getCompleteness() {
+    return _model.hexes.where((e) => e.state == GameFieldHexState.fixed).length / _model.hexes.length;
   }
 
   double _getDistance(Offset p1, Offset p2) {
@@ -237,9 +241,5 @@ class GameFieldModelProcessor {
       case GameFieldHexAngle.angle60:
         return GameFieldHexAngle.angle0;
     }
-  }
-
-  bool _checkIsCompleted() {
-    return !_model.hexes.any((e) => e.state != GameFieldHexState.fixed);
   }
 }

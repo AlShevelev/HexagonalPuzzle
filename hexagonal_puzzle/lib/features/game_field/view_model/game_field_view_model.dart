@@ -61,7 +61,11 @@ class GameFieldViewModel extends ViewModelBase implements GameFieldViewModelUser
 
     _gesturesProcessor = GameFieldModelProcessor(_gameFieldModel, _repaintNotifier);
 
-    _state.update(Playing(gameFieldModel: _gameFieldModel, repaintNotifier: _repaintNotifier, buttonsActive: true));
+    _state.update(Playing(
+        gameFieldModel: _gameFieldModel,
+        repaintNotifier: _repaintNotifier,
+        buttonsActive: true,
+        completeness: _gesturesProcessor.getCompleteness()));
   }
 
   @override
@@ -71,13 +75,15 @@ class GameFieldViewModel extends ViewModelBase implements GameFieldViewModelUser
 
   @override
   void onDoubleTap(Offset position) {
-    final isCompleted = _gesturesProcessor.onDoubleTap(position.translate(
+    final completeness = _gesturesProcessor.onDoubleTap(position.translate(
       _gameFieldModel.gameFieldOffset.dx,
       _gameFieldModel.gameFieldOffset.dy,
     ));
 
-    if (isCompleted) {
+    if (completeness == 1.0) {
       _complete();
+    } else {
+      _state.update((_state.current as Playing).setCompleteness(completeness));
     }
   }
 
@@ -91,10 +97,12 @@ class GameFieldViewModel extends ViewModelBase implements GameFieldViewModelUser
   void onDragEnd() {
     _state.update((_state.current as Playing).setButtonsState(true));
 
-    final isCompleted = _gesturesProcessor.onDragEnd();
+    final completeness = _gesturesProcessor.onDragEnd();
 
-    if (isCompleted) {
+    if (completeness == 1.0) {
       _complete();
+    } else {
+      _state.update((_state.current as Playing).setCompleteness(completeness));
     }
   }
 
@@ -107,7 +115,11 @@ class GameFieldViewModel extends ViewModelBase implements GameFieldViewModelUser
   void onHintClick() {
     final GameFieldState oldState = _state.current!;
 
-    _state.update(Hint(_gameFieldModel.gameFieldImage, _gameFieldModel.gameFieldOffset));
+    _state.update(Hint(
+      image: _gameFieldModel.gameFieldImage,
+      offset: _gameFieldModel.gameFieldOffset,
+      completeness: _gesturesProcessor.getCompleteness(),
+    ));
 
     Future.delayed(const Duration(milliseconds: 2000), () async {
       _state.update(oldState);

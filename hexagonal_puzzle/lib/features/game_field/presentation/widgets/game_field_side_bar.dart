@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
+import '../../../../core/ui_kit/style/typography.dart';
+import '../../../../core/ui_kit/text/stroked_text.dart';
+
 enum GameFieldSideBarButtonState { active, inactive, disabled, hidden }
 
 class GameFieldSideBar extends StatelessWidget {
@@ -9,6 +12,7 @@ class GameFieldSideBar extends StatelessWidget {
     required Function onHintClick,
     required GameFieldSideBarButtonState closeButtonState,
     required Function onCloseClick,
+    required double completeness,
     Key? key,
   }) : super(key: key) {
     _hintButtonState = hintButtonState;
@@ -16,6 +20,8 @@ class GameFieldSideBar extends StatelessWidget {
 
     _closeButtonState = closeButtonState;
     _onCloseClick = onCloseClick;
+
+    _completeness = completeness;
   }
 
   late final Function _onHintClick;
@@ -23,6 +29,8 @@ class GameFieldSideBar extends StatelessWidget {
 
   late final Function _onCloseClick;
   late final GameFieldSideBarButtonState _closeButtonState;
+
+  late final double _completeness;
 
   @override
   Widget build(BuildContext context) {
@@ -45,7 +53,12 @@ class GameFieldSideBar extends StatelessWidget {
     );
 
     return Column(
-      children: buttons,
+      children: buttons
+        ..add(const Spacer())
+        ..add(StrokedText(
+          text: "${(_completeness * 100).toInt()}%",
+          style: AppTypography.s18w400,
+        )),
     );
   }
 

@@ -6,10 +6,16 @@ import '../../../../../core/ui_kit/image/ui_image_painter.dart';
 import '../game_field_side_bar.dart';
 
 class StateHint extends StatelessWidget {
-  const StateHint({required this.image, required this.offset, Key? key}) : super(key: key);
+  const StateHint({
+    required this.image,
+    required this.offset,
+    required this.completeness,
+    Key? key,
+  }) : super(key: key);
 
   final ui.Image image;
   final ui.Offset offset;
+  final double completeness;
 
   @override
   Widget build(BuildContext context) {
@@ -33,6 +39,7 @@ class StateHint extends StatelessWidget {
               onHintClick: () {},
               closeButtonState: GameFieldSideBarButtonState.disabled,
               onCloseClick: () {},
+              completeness: completeness,
             ),
           )
         ],
