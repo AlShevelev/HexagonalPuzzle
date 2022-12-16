@@ -2,6 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
+import '../../../../app/routing/routes.dart';
 import '../../../../core/ui_kit/style/typography.dart';
 import '../../../../core/ui_kit/text/stroked_text.dart';
 
@@ -12,20 +13,14 @@ class LevelGridItem extends StatefulWidget {
   LevelGridItem({
     Key? key,
     required LevelDto level,
-    required AssetImage loadingImage,
-    required Function(int) onItemClick,
+    required AssetImage loadingImage
   }) : super(key: key) {
     _level = level;
     _loadingImage = loadingImage;
-    _onItemClick = onItemClick;
   }
 
   late final LevelDto _level;
-
   late final AssetImage _loadingImage;
-
-  /// The passed parameter is level's id
-  late final Function(int) _onItemClick;
 
   @override
   State<LevelGridItem> createState() => _LevelGridItemState();
@@ -33,6 +28,16 @@ class LevelGridItem extends StatefulWidget {
 
 class _LevelGridItemState extends State<LevelGridItem> {
   bool isOnTap = false;
+
+  late LevelDto _level;
+  late AssetImage _loadingImage;
+
+  @override
+  void initState() {
+    _level = widget._level;
+    _loadingImage = widget._loadingImage;
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -49,11 +54,20 @@ class _LevelGridItemState extends State<LevelGridItem> {
               isOnTap = true;
             });
 
-            Future.delayed(const Duration(milliseconds: 100), () {
+            Future.delayed(const Duration(milliseconds: 100), () async {
               setState(() {
                 isOnTap = false;
               });
-              widget._onItemClick(widget._level.id);
+
+              final completed = await Navigator.of(context).pushNamed(Routes.gameFieldPage, arguments: _level.id);
+
+              if (!mounted) return;
+
+              if(completed == true) {
+                setState(() {
+                  _level = _level.markAsCompleted();
+                });
+              }
             });
           },
           onTapCancel: () {
@@ -75,8 +89,8 @@ class _LevelGridItemState extends State<LevelGridItem> {
                     child: Opacity(
                       opacity: isOnTap ? 0.5 : 1.0,
                       child: Stack(children: <Widget>[
-                        Image(image: widget._loadingImage),
-                        Image.asset(widget._level.asset),
+                        Image(image: _loadingImage),
+                        Image.asset(_level.asset),
                       ]),
                     ),
                   ),
@@ -84,7 +98,7 @@ class _LevelGridItemState extends State<LevelGridItem> {
               ),
               Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: widget._level.isCompleted
+                child: _level.isCompleted
                     ? SvgPicture.asset(
                         'assets/icons/ic_check.svg',
                         width: 30,
@@ -98,7 +112,7 @@ class _LevelGridItemState extends State<LevelGridItem> {
         Padding(
           padding: const EdgeInsets.only(top: 2.0),
           child: StrokedText(
-            text: widget._level.nameLocalizationCode.tr(),
+            text: _level.nameLocalizationCode.tr(),
             style: AppTypography.s16w400,
           ),
         )

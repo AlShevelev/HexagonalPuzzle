@@ -10,4 +10,13 @@ class LevelDto {
   final String nameLocalizationCode;
   final String asset;
   final bool isCompleted;
+
+  LevelDto markAsCompleted() {
+    return LevelDto(
+      id: id,
+      nameLocalizationCode: nameLocalizationCode,
+      asset: asset,
+      isCompleted: true,
+    );
+  }
 }

@@ -5,15 +5,7 @@ import '../../../../core/data/repositories/levels/model/level_dto.dart';
 import 'level_grid_item.dart';
 
 class LevelGrid extends StatefulWidget {
-  LevelGrid({
-    required Function(int) onItemClick,
-    Key? key,
-  }) : super(key: key) {
-    _onItemClick = onItemClick;
-  }
-
-  /// The passed parameter is level's id
-  late final Function(int) _onItemClick;
+  const LevelGrid({Key? key}) : super(key: key);
 
   @override
   State<LevelGrid> createState() => _LevelGridState();
@@ -40,7 +32,7 @@ class _LevelGridState extends State<LevelGrid> {
     _repository = LevelsRepository();
     await _repository.init();
 
-      if (mounted) {
+    if (mounted) {
       _levels = await _repository.getAll(context);
     } else {
       _levels = List.empty();
@@ -60,16 +52,15 @@ class _LevelGridState extends State<LevelGrid> {
         scrollDirection: Axis.horizontal,
         shrinkWrap: true,
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 2,
-          mainAxisSpacing: 8,
-          crossAxisSpacing: 16
+            crossAxisCount: 2,
+            mainAxisSpacing: 8,
+            crossAxisSpacing: 16
         ),
         itemCount: _levels.length,
         itemBuilder: (BuildContext context, int index) {
           return LevelGridItem(
             level: _levels[index],
             loadingImage: _loadingImage,
-            onItemClick: widget._onItemClick,
           );
         },
       );

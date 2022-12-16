@@ -68,6 +68,7 @@ class _GameFieldPageState extends State<GameFieldPage> {
                       image: state.image,
                       offset: state.offset,
                       showLabel: state.showLabel,
+                      levelId: widget.levelId,
                     );
                   }
                 case Playing:

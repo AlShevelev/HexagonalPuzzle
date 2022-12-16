@@ -13,18 +13,20 @@ class StateCompleted extends StatelessWidget {
     required this.image,
     required this.offset,
     required this.showLabel,
+    required this.levelId,
     Key? key,
   }) : super(key: key);
 
   final ui.Image image;
   final ui.Offset offset;
   final bool showLabel;
+  final int levelId;
 
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
       onWillPop: () async {
-        Navigator.of(context).pop();
+        Navigator.of(context).pop(true);
         return true;
       },
       child: Row(
@@ -51,7 +53,7 @@ class StateCompleted extends StatelessWidget {
               onHintClick: () {},
               closeButtonState: GameFieldSideBarButtonState.active,
               onCloseClick: () {
-                Navigator.of(context).pop();
+                Navigator.of(context).pop(true);
               },
               completeness: 1.0,
             ),

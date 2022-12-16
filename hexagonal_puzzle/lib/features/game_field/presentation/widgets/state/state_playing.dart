@@ -46,7 +46,7 @@ class StatePlaying extends StatelessWidget {
         }
         if (await _onClosePopupDialog(context)) {
           // ignore: use_build_context_synchronously
-          Navigator.of(context).pop();
+          Navigator.of(context).pop(false);
           return true;
         }
         return false;
@@ -92,7 +92,7 @@ class StatePlaying extends StatelessWidget {
               onCloseClick: () async {
                 if (await _onClosePopupDialog(context)) {
                   // ignore: use_build_context_synchronously
-                  Navigator.of(context).pop();
+                  Navigator.of(context).pop(false);
                 }
               },
               completeness: _completeness,

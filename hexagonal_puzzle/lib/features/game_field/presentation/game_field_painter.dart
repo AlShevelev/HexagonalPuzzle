@@ -15,7 +15,7 @@ class GameFieldPainter extends CustomPainter {
       ..style = PaintingStyle.fill;
 
     _notFixedHexPaint = Paint()
-      ..color = AppColors.green
+      ..color = AppColors.yellow
       ..strokeWidth = 2
       ..style = PaintingStyle.stroke;
 
