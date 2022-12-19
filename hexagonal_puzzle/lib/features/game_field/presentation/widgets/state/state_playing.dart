@@ -5,7 +5,7 @@ import '../../../../../core/ui_kit/style/typography.dart';
 import '../../../../../core/ui_kit/text/stroked_text.dart';
 import '../../../core/image_loader/dto/game_field_model.dart';
 import '../../../view_model/game_field_view_model_user_events.dart';
-import '../../game_field_painter.dart';
+import '../painter/game_field_painter.dart';
 import '../game_field_side_bar.dart';
 
 class StatePlaying extends StatelessWidget {

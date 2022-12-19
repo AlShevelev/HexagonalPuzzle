@@ -19,6 +19,11 @@
   "settings_pieces_turning_on": "Pieces turning: on",
   "settings_pieces_turning_off": "Pieces turning: off",
 
+  "help_title": "How to play",
+  "help_swap": "Swap yellow cells\nby dragging",
+  "help_clockwise": "Double tap here\nto rotate clockwise...",
+  "help_counterclockwise": "...and counterclockwise",
+
   "general_yes": "Yes",
   "general_no": "No",
 

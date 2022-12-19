@@ -247,34 +247,6 @@ class ImageLoader {
     }
 
     return result;
-
-    // Clip path
-    // var pictureRecorder = ui.PictureRecorder();
-    //
-    // final canvas = Canvas(pictureRecorder);
-    // final center = Offset(image.width / 2, image.height / 2);
-    //
-    // canvas.save();
-    // canvas.translate(center.dx, center.dy);
-    //
-    // final rotationAngle = _getAngleInRadians(GameFieldHexAngle.angle120);
-    // canvas.rotate(rotationAngle);
-    //
-    // final clipVertex = relativeVertexes.map((e) => e.translate(-center.dx, -center.dy)).toList(growable: false);
-    //
-    // Path path = Path()..addPolygon(clipVertex, true);
-    //
-    // canvas.clipPath(path);
-    // canvas.drawImage(image, Offset(-center.dx, -center.dy), Paint());
-    //
-    // canvas.translate(-center.dx, -center.dy);
-    // canvas.restore();
-    //
-    // var pic = pictureRecorder.endRecording();
-    //
-    // ui.Image img = await pic.toImage(image.width, image.height);
-    //
-    // return img;
   }
 
   double _getAngleInRadians(GameFieldHexAngle angle) {

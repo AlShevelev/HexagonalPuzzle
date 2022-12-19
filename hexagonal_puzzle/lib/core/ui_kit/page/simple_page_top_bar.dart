@@ -1,19 +1,21 @@
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-import '../../../../core/ui_kit/style/typography.dart';
-import '../../../../core/ui_kit/text/stroked_text.dart';
+import '../style/typography.dart';
+import '../text/stroked_text.dart';
 
-class SettingsPageTopBar extends StatelessWidget {
-  SettingsPageTopBar({
+class SimplePageTopBar extends StatelessWidget {
+  SimplePageTopBar({
+    required String title,
     required Function onBackClick,
     Key? key,
   }) : super(key: key) {
+    _title = title;
     _onBackClick = onBackClick;
   }
 
   late final Function _onBackClick;
+  late final String _title;
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +35,7 @@ class SettingsPageTopBar extends StatelessWidget {
           ),
         ),
         StrokedText(
-          text: tr('settings_title'),
+          text: _title,
           style: AppTypography.s24w400,
         ),
       ],

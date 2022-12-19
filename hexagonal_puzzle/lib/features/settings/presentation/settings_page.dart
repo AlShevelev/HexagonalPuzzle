@@ -5,7 +5,7 @@ import 'package:hexagonal_puzzle/features/settings/view_model/settings_veiw_mode
 import '../../../core/ui_kit/page/page_background.dart';
 import '../../../core/ui_kit/style/typography.dart';
 import '../../../core/ui_kit/text/stroked_text.dart';
-import 'widgets/settings_page_top_bar.dart';
+import '../../../core/ui_kit/page/simple_page_top_bar.dart';
 
 class SettingsPage extends StatefulWidget {
   const SettingsPage({Key? key}) : super(key: key);
@@ -52,7 +52,8 @@ class _SettingsPageState extends State<SettingsPage> {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
-            SettingsPageTopBar(
+            SimplePageTopBar(
+              title: tr('settings_title'),
               onBackClick: () {
                 Navigator.of(context).pop();
               },

@@ -1,15 +1,13 @@
 import 'package:flutter/material.dart';
 import 'dart:ui' as ui;
 
-import '../../../core/ui_kit/style/colors.dart';
-import '../core/image_loader/dto/game_field_hex.dart';
-import '../core/image_loader/dto/game_field_model.dart';
+import '../../../../../core/ui_kit/style/colors.dart';
+import '../../../core/image_loader/dto/game_field_hex.dart';
+import '../../../core/image_loader/dto/game_field_model.dart';
 
 
 class GameFieldPainter extends CustomPainter {
-  GameFieldPainter(GameFieldModel model, Listenable repaint) : super(repaint: repaint) {
-    _model = model;
-
+  GameFieldPainter(this.model, Listenable? repaint) : super(repaint: repaint) {
     _inMotionHexPaint = Paint()
       ..color = AppColors.yellow.withOpacity(0.5)
       ..style = PaintingStyle.fill;
@@ -29,7 +27,7 @@ class GameFieldPainter extends CustomPainter {
       ..style = PaintingStyle.fill;
   }
 
-  late final GameFieldModel _model;
+  late final GameFieldModel model;
 
   late final Paint _inMotionHexPaint;
   late final Paint _notFixedHexPaint;
@@ -38,22 +36,26 @@ class GameFieldPainter extends CustomPainter {
 
   @override
   void paint(Canvas canvas, Size size) {
+    canvas.save();
+    canvas.translate(model.gameFieldOffset.dx, model.gameFieldOffset.dy);
+
+    paintGameField(canvas, size);
+
+    canvas.translate(-model.gameFieldOffset.dx, -model.gameFieldOffset.dy);
+    canvas.restore();
+  }
+
+  void paintGameField(Canvas canvas, Size size) {
     final paint = Paint();
 
-    canvas.save();
-    canvas.translate(_model.gameFieldOffset.dx, _model.gameFieldOffset.dy);
-
-    for (var item in _model.fixed) {
+    for (var item in model.fixed) {
       _paintPiece(canvas, item.rect, item.image, paint);
     }
 
-    _paintHexes(_model.hexes, GameFieldHexState.fixed, canvas, paint);
-    _paintHexes(_model.hexes, GameFieldHexState.notFixed, canvas, paint);
-    _paintHexes(_model.hexes, GameFieldHexState.readyToExchange, canvas, paint);
-    _paintHexes(_model.hexes, GameFieldHexState.inMotion, canvas, paint);
-
-    canvas.translate(-_model.gameFieldOffset.dx, -_model.gameFieldOffset.dy);
-    canvas.restore();
+    _paintHexes(model.hexes, GameFieldHexState.fixed, canvas, paint);
+    _paintHexes(model.hexes, GameFieldHexState.notFixed, canvas, paint);
+    _paintHexes(model.hexes, GameFieldHexState.readyToExchange, canvas, paint);
+    _paintHexes(model.hexes, GameFieldHexState.inMotion, canvas, paint);
   }
 
   @override
@@ -72,7 +74,7 @@ class GameFieldPainter extends CustomPainter {
   }
 
   void _paintHexes(List<GameFieldHex> hexes, GameFieldHexState state, Canvas canvas, Paint paint) {
-    for (var item in _model.hexes) {
+    for (var item in model.hexes) {
       if(item.state == state) {
         _paintHex(canvas, item, paint);
       }
