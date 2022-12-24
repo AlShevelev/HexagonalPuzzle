@@ -51,3 +51,9 @@ flutter:
 
     # icons
     - assets/icons/
+
+    #nusic
+    - assets/music/
+
+    #sounds
+    - assets/sounds/
