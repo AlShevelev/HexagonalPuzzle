@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'package:provider/provider.dart';
 
 import '../../../../core/data/repositories/settings/settings_repository.dart';
 import '../../../../core/ui_kit/style/typography.dart';
@@ -24,31 +25,13 @@ class MainMenuTopBar extends StatefulWidget {
 }
 
 class _MainMenuTopBarState extends State<MainMenuTopBar> {
-  late final SettingsRepository _repository;
-
-  bool _repositorySetup = false;
-
-  @override
-  void initState() {
-    super.initState();
-    init();
-  }
-
-  void init() async {
-    _repository = SettingsRepository();
-    await _repository.init();
-
-    setState(() {
-      _repositorySetup = true;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     bool isGeneralSoundOn = true;
-    if(_repositorySetup) {
-      isGeneralSoundOn = _repository.getSoundOn() || _repository.getMusicOn();
-    }
+
+    final SettingsRepository repository = context.read<SettingsRepository>();
+
+    isGeneralSoundOn = repository.getSoundOn() || repository.getMusicOn();
 
     final String soundButtonIcon;
     if(isGeneralSoundOn) {
@@ -67,8 +50,8 @@ class _MainMenuTopBarState extends State<MainMenuTopBar> {
         GestureDetector(
           onTap: () {
             setState(() {
-              _repository.setSoundOn(!isGeneralSoundOn);
-              _repository.setMusicOn(!isGeneralSoundOn);
+              repository.setSoundOn(!isGeneralSoundOn);
+              repository.setMusicOn(!isGeneralSoundOn);
               isGeneralSoundOn = !isGeneralSoundOn;
             });
           },
@@ -107,3 +90,4 @@ class _MainMenuTopBarState extends State<MainMenuTopBar> {
     );
   }
 }
+

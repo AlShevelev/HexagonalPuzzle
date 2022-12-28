@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
+import '../../../core/data/repositories/levels/levels_repository.dart';
 import '../../../core/ui_kit/page/page_background.dart';
 import '../view_model/help_view_model.dart';
 import '../view_model/model/state.dart';
@@ -27,8 +29,6 @@ class _HelpPageState extends State<HelpPage> {
   }
 
   Future<void> init() async {
-    await _viewModel.init();
-
     Future.delayed(const Duration(milliseconds: 500), () async {
       final RenderBox renderBox = _helpWidgetKey.currentContext?.findRenderObject() as RenderBox;
 
@@ -46,6 +46,8 @@ class _HelpPageState extends State<HelpPage> {
 
   @override
   Widget build(BuildContext context) {
+    _viewModel.init(context.read<LevelsRepository>());
+
     return PageBackground(
       child: Padding(
         padding: const EdgeInsets.all(16.0),

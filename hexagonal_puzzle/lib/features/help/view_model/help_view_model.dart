@@ -21,11 +21,18 @@ class HelpViewModel extends ViewModelBase {
 
   Stream<HelpState> get state => _state.output;
 
-  Future<void> init() async {
+  bool _isInitialized = false;
+
+  void init(LevelsRepository levelsRepository) {
+    if(_isInitialized) {
+      return;
+    }
+
     _state.update(Loading());
 
-    _levelsRepository = LevelsRepository();
-    await _levelsRepository.init();
+    _levelsRepository = levelsRepository;
+
+    _isInitialized = true;
   }
 
   Future<void> onSizeCalculated(Size size, BuildContext context) async {

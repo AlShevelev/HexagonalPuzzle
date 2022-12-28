@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:ffi';
 
 import 'package:hexagonal_puzzle/core/data/repositories/settings/settings_repository.dart';
 import 'package:hexagonal_puzzle/core/view_model/view_model_base.dart';
@@ -36,16 +37,22 @@ class SettingsViewModel extends ViewModelBase {
 
   late final SettingsRepository _repository;
 
-  /// Loads an initial settings
-  Future<void> loadSettings() async {
-    _repository = SettingsRepository();
-    await _repository.init();
+  bool _isInitialized = false;
+
+  void init(SettingsRepository settingsRepository) {
+    if(_isInitialized) {
+      return;
+    }
+
+    _repository = settingsRepository;
 
     _inMusicOn.add(_repository.getMusicOn());
     _inSoundOn.add(_repository.getSoundOn());
     _inNumberOfPieces.add(_repository.getNumberOfPieces());
     _inNumberOfPermutations.add(_repository.getNumberOfPermutations());
     _inPiecesTurningOn.add(_repository.getPiecesTurningOn());
+
+    _isInitialized = true;
   }
 
   void setMusicOn(bool value) {

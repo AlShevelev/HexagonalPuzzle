@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../../../../core/data/repositories/levels/levels_repository.dart';
 import '../../../../core/data/repositories/levels/model/level_dto.dart';
@@ -12,40 +13,30 @@ class LevelGrid extends StatefulWidget {
 }
 
 class _LevelGridState extends State<LevelGrid> {
-  late final LevelsRepository _repository;
-
-  late final List<LevelDto> _levels;
+  late List<LevelDto> _levels;
 
   late final AssetImage _loadingImage;
-
-  bool _repositorySetup = false;
 
   @override
   void initState() {
     super.initState();
-    init();
-  }
 
-  void init() async {
     _loadingImage = const AssetImage('assets/images/levels/small/empty.webp');
-
-    _repository = LevelsRepository();
-    await _repository.init();
-
-    if (mounted) {
-      _levels = await _repository.getAll(context);
-    } else {
-      _levels = List.empty();
-    }
-
-    setState(() {
-      _repositorySetup = true;
-    });
+    _levels = List.empty();
   }
 
   @override
   Widget build(BuildContext context) {
-    if (!_repositorySetup) {
+    if(_levels.isEmpty) {
+      final repository = context.read<LevelsRepository>();
+      Future.delayed(const Duration(milliseconds: 0), () async {
+        _levels = await repository.getAll(context);
+
+        setState(() { });
+      });
+    }
+
+    if (_levels.isEmpty) {
       return const SizedBox.shrink();
     } else {
       return GridView.builder(
