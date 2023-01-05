@@ -1,3 +1,5 @@
+import 'package:flutter/foundation.dart';
+
 import '../../storages/key_value_storage.dart';
 import 'settings_default.dart';
 import 'settings_keys.dart';
@@ -5,16 +7,23 @@ import 'settings_keys.dart';
 class SettingsRepository {
   late final KeyValueStorage _storage;
 
+  ValueNotifier<bool> soundsOn = ValueNotifier(false);
+
+  ValueNotifier<bool> musicOn = ValueNotifier(false);
+
+
   Future<void> init() async {
     _storage = KeyValueStorage();
     _storage.init();
   }
 
   void setMusicOn(bool value) {
+    musicOn.value = value;
     _storage.setBool(SettingsKeys.musicOn, value);
   }
 
   void setSoundOn(bool value) {
+    soundsOn.value = value;
     _storage.setBool(SettingsKeys.soundOn, value);
   }
 
@@ -51,11 +60,19 @@ class SettingsRepository {
   }
 
   bool getMusicOn() {
-    return _storage.getBool(SettingsKeys.musicOn) ?? SettingsDefault.musicOn;
+    final result = _storage.getBool(SettingsKeys.musicOn) ?? SettingsDefault.musicOn;
+
+    musicOn.value = result;
+
+    return result;
   }
 
   bool getSoundOn() {
-    return _storage.getBool(SettingsKeys.soundOn) ?? SettingsDefault.musicOn;
+    final result = _storage.getBool(SettingsKeys.soundOn) ?? SettingsDefault.musicOn;
+
+    soundsOn.value = result;
+
+    return result;
   }
 
   /// few - 0; several - 1, many - 2
