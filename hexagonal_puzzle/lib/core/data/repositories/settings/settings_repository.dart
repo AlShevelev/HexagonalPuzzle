@@ -14,7 +14,11 @@ class SettingsRepository {
 
   Future<void> init() async {
     _storage = KeyValueStorage();
-    _storage.init();
+    await _storage.init();
+
+    musicOn.value = _storage.getBool(SettingsKeys.musicOn) ?? false;
+    soundsOn.value = _storage.getBool(SettingsKeys.soundOn) ?? false;
+    return;
   }
 
   void setMusicOn(bool value) {
