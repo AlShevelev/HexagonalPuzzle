@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hexagonal_puzzle/core/audio/audio_controller.dart';
 import 'package:hexagonal_puzzle/core/data/repositories/levels/levels_repository.dart';
 import 'package:hexagonal_puzzle/features/game_field/presentation/widgets/state/state_hint.dart';
 import 'package:provider/provider.dart';
@@ -51,7 +52,11 @@ class _GameFieldPageState extends State<GameFieldPage> {
 
   @override
   Widget build(BuildContext context) {
-    _viewModel.init(context.read<SettingsRepository>(), context.read<LevelsRepository>());
+    _viewModel.init(
+      context.read<SettingsRepository>(),
+      context.read<LevelsRepository>(),
+      context.read<AudioController>(),
+    );
 
     return PageBackground(
       child: Padding(

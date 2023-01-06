@@ -83,6 +83,10 @@ class AudioController {
     _sfxPlayer.play(AssetSource('sounds/$filename'));
   }
 
+  void stopSound() {
+    _sfxPlayer.stop();
+  }
+
   void _playNextSong(void _) {
     _activeTrack++;
 

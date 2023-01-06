@@ -1,7 +1,9 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:hexagonal_puzzle/core/audio/sound.dart';
 
+import '../../../core/audio/audio_controller.dart';
 import '../../../core/data/repositories/levels/levels_repository.dart';
 import '../../../core/data/repositories/settings/settings_repository.dart';
 import '../../../core/utils/simple_stream.dart';
@@ -23,6 +25,7 @@ class GameFieldViewModel extends ViewModelBase implements GameFieldViewModelUser
 
   late final SettingsRepository _settingsRepository;
   late final LevelsRepository _levelsRepository;
+  late final AudioController _audioController;
 
   late final GameFieldModel _gameFieldModel;
   late final RepaintNotifier _repaintNotifier;
@@ -34,8 +37,12 @@ class GameFieldViewModel extends ViewModelBase implements GameFieldViewModelUser
 
   bool _isInitialized = false;
 
-  void init(SettingsRepository settingsRepository, LevelsRepository levelsRepository) {
-    if(_isInitialized) {
+  void init(
+    SettingsRepository settingsRepository,
+    LevelsRepository levelsRepository,
+    AudioController audioController,
+  ) {
+    if (_isInitialized) {
       return;
     }
 
@@ -43,6 +50,7 @@ class GameFieldViewModel extends ViewModelBase implements GameFieldViewModelUser
 
     _settingsRepository = settingsRepository;
     _levelsRepository = levelsRepository;
+    _audioController = audioController;
 
     _repaintNotifier = RepaintNotifier();
 
@@ -75,11 +83,14 @@ class GameFieldViewModel extends ViewModelBase implements GameFieldViewModelUser
 
   @override
   void dispose() {
+    _audioController.stopSound();
     _state.close();
   }
 
   @override
   void onDoubleTap(Offset position) {
+    final oldCompleteness = (_state.current as Playing).completeness;
+
     final completeness = _gesturesProcessor.onDoubleTap(position.translate(
       _gameFieldModel.gameFieldOffset.dx,
       _gameFieldModel.gameFieldOffset.dy,
@@ -89,6 +100,10 @@ class GameFieldViewModel extends ViewModelBase implements GameFieldViewModelUser
       _complete();
     } else {
       _state.update((_state.current as Playing).setCompleteness(completeness));
+
+      if(oldCompleteness != completeness) {
+        _audioController.playSound(SoundType.success);
+      }
     }
   }
 
@@ -102,12 +117,18 @@ class GameFieldViewModel extends ViewModelBase implements GameFieldViewModelUser
   void onDragEnd() {
     _state.update((_state.current as Playing).setButtonsState(true));
 
+    final oldCompleteness = (_state.current as Playing).completeness;
+
     final completeness = _gesturesProcessor.onDragEnd();
 
     if (completeness == 1.0) {
       _complete();
     } else {
       _state.update((_state.current as Playing).setCompleteness(completeness));
+
+      if(oldCompleteness != completeness) {
+        _audioController.playSound(SoundType.success);
+      }
     }
   }
 
@@ -154,6 +175,8 @@ class GameFieldViewModel extends ViewModelBase implements GameFieldViewModelUser
       offset: _gameFieldModel.gameFieldOffset,
       showLabel: true,
     );
+    
+    _audioController.playSound(SoundType.win);
 
     _state.update(completedState);
 
