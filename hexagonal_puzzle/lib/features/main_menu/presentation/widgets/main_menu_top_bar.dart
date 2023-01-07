@@ -25,16 +25,17 @@ class MainMenuTopBar extends StatefulWidget {
 }
 
 class _MainMenuTopBarState extends State<MainMenuTopBar> {
+  bool _isGeneralSoundOn = true;
+
+  late final SettingsRepository _repository = context.read<SettingsRepository>();
+
   @override
   Widget build(BuildContext context) {
-    bool isGeneralSoundOn = true;
-
-    final SettingsRepository repository = context.read<SettingsRepository>();
-
-    isGeneralSoundOn = repository.getSoundOn() || repository.getMusicOn();
+    _repository.soundsOn.addListener(_onSoundSettingsUpdated);
+    _repository.musicOn.addListener(_onSoundSettingsUpdated);
 
     final String soundButtonIcon;
-    if(isGeneralSoundOn) {
+    if(_isGeneralSoundOn) {
       soundButtonIcon = 'assets/icons/ic_sound_on.svg';
     } else {
       soundButtonIcon = 'assets/icons/ic_sound_off.svg';
@@ -50,9 +51,9 @@ class _MainMenuTopBarState extends State<MainMenuTopBar> {
         GestureDetector(
           onTap: () {
             setState(() {
-              repository.setSoundOn(!isGeneralSoundOn);
-              repository.setMusicOn(!isGeneralSoundOn);
-              isGeneralSoundOn = !isGeneralSoundOn;
+              _repository.setSoundOn(!_isGeneralSoundOn);
+              _repository.setMusicOn(!_isGeneralSoundOn);
+              _onSoundSettingsUpdated();
             });
           },
           child: SvgPicture.asset(
@@ -88,6 +89,20 @@ class _MainMenuTopBarState extends State<MainMenuTopBar> {
         ),
       ],
     );
+  }
+
+  @override
+  void dispose() {
+    _repository.soundsOn.removeListener(_onSoundSettingsUpdated);
+    _repository.musicOn.removeListener(_onSoundSettingsUpdated);
+
+    super.dispose();
+  }
+
+  void _onSoundSettingsUpdated() {
+    setState(() {
+      _isGeneralSoundOn = _repository.getSoundOn() || _repository.getMusicOn();
+    });
   }
 }
 
