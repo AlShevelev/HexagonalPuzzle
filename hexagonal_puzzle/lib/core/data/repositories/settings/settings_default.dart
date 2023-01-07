@@ -1,7 +1,7 @@
 class SettingsDefault {
-  static const musicOn = true;
+  static const musicOn = false;
 
-  static const soundOn = true;
+  static const soundOn = false;
 
   /// few - 0; several - 1, many - 2
   static const numberOfPieces = 2;

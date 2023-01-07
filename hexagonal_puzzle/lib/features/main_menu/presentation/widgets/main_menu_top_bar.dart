@@ -34,6 +34,8 @@ class _MainMenuTopBarState extends State<MainMenuTopBar> {
     _repository.soundsOn.addListener(_onSoundSettingsUpdated);
     _repository.musicOn.addListener(_onSoundSettingsUpdated);
 
+    _isGeneralSoundOn = _repository.getSoundOn() || _repository.getMusicOn();
+
     final String soundButtonIcon;
     if(_isGeneralSoundOn) {
       soundButtonIcon = 'assets/icons/ic_sound_on.svg';
