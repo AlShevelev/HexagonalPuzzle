@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:typed_data';
 import 'dart:ui' as ui;
 import 'dart:math' as math;
 
@@ -23,8 +22,6 @@ class ImageLoader {
 
     final gameFieldCalculator = GameFieldCalculator();
     final calculationResult = gameFieldCalculator.calculatePieces(canvasSize, piecesInRow);
-
-    print('Game field size: ${calculationResult.gameFieldSize.width};${calculationResult.gameFieldSize.height}');
 
     final resizedBitmap = await _resizeBitmap(assetBitmap, calculationResult.gameFieldSize);
 

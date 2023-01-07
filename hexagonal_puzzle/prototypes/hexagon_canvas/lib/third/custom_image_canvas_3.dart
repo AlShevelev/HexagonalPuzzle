@@ -68,11 +68,8 @@ class CustomImageCanvasState extends State<CustomImageCanvas3> {
           }
 
           if (selectedCenterIndex != null) {
-            print('Inside');
             _keyDataStorage.updateAngle(selectedCenterIndex);
             _repaintNotifier.repaint();
-          } else {
-            print('Outside');
           }
         },
         child: CustomPaint(

@@ -8,8 +8,6 @@ class GameFieldDebugPainter extends CustomPainter {
       ..color = Colors.green;
 
     canvas.drawRect(Rect.fromLTWH(0, 0, size.width, size.height), paint);
-
-    print('Canvas size is: ${size.width};${size.height}');
   }
 
   @override

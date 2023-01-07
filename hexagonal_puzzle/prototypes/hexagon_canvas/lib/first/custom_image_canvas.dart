@@ -7,9 +7,6 @@ import 'dart:async';
 import 'dart:typed_data';
 import 'dart:math' as math;
 
-// import 'package:path/path.dart';
-// import 'package:path_provider/path_provider.dart';
-
 class CustomImageCanvas extends StatefulWidget {
   const CustomImageCanvas({Key? key, required this.title}) : super(key: key);
 
@@ -114,31 +111,6 @@ class PngImagePainter extends CustomPainter {
     canvas.drawImage(image, Offset(drawImageWidth, drawImageHeight), Paint());
     return canvas;
   }
-
-/*
-  _saveCanvas(Size size) async {
-    var pictureRecorder = ui.PictureRecorder();
-    var canvas = Canvas(pictureRecorder);
-    var paint = Paint();
-    paint.isAntiAlias = true;
-
-    _drawCanvas(size, canvas);
-
-    var pic = pictureRecorder.endRecording();
-    ui.Image img = await pic.toImage(image.width, image.height);
-
-    var byteData = await img.toByteData(format: ui.ImageByteFormat.png);
-    var buffer = byteData!.buffer.asUint8List();
-
-    // var response = await get(imgUrl);
-    var documentDirectory = await getApplicationDocumentsDirectory();
-    File file = File(join(documentDirectory.path,
-        '${DateTime.now().toUtc().toIso8601String()}.png'));
-    file.writeAsBytesSync(buffer);
-
-    print(file.path);
-  }
-*/
 
   @override
   bool shouldRepaint(CustomPainter oldDelegate) {
