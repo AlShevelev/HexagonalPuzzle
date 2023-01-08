@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.shevelev.hexagonal_puzzle">
    <application
-        android:label="hexagonal_puzzle"
+        android:label="@string/app_label"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
