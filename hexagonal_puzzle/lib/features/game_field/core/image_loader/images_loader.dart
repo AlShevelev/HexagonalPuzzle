@@ -2,7 +2,7 @@ import 'dart:async';
 import 'dart:ui' as ui;
 import 'dart:math' as math;
 
-//import 'package:bitmap/bitmap.dart';
+import 'package:bitmap/bitmap.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter/services.dart';
@@ -18,13 +18,6 @@ import 'dto/game_field_model.dart';
 
 class ImageLoader {
   Future<GameFieldModel> loadImages(String asset, Size canvasSize, int piecesInRow) async {
-    return GameFieldModel(
-      [],
-      [],
-      Offset.zero,
-      await _createEmptyImage(1, 1),
-    );
-/*
     final assetBitmap = await _loadAssetBitmap(asset);
 
     final gameFieldCalculator = GameFieldCalculator();
@@ -37,37 +30,8 @@ class ImageLoader {
       (canvasSize.height - calculationResult.gameFieldSize.height) / 2,
     );
     return await _cutAllPieces(resizedBitmap, calculationResult, gameFieldOffset);
-*/
   }
 
-  Future<ui.Image> _createEmptyImage(int width, int height) async {
-    // 1. Create a PictureRecorder to record drawing operations.
-    final ui.PictureRecorder recorder = ui.PictureRecorder();
-
-    // 2. Create a Canvas to draw on the recorder.
-    final ui.Canvas canvas = ui.Canvas(recorder);
-
-    // 3. Define the paint for the background (e.g., transparent or a specific color).
-    final ui.Paint paint = ui.Paint();
-    // To make it transparent, the color's alpha should be 0.
-    // Alternatively, you can fill it with a color: paint.color = Colors.white;
-    paint.color = const Color(0x00000000); // Transparent color
-
-    // 4. Draw a rectangle to fill the specified area.
-    final ui.Rect rect = ui.Rect.fromLTWH(0, 0, width.toDouble(), height.toDouble());
-    canvas.drawRect(rect, paint);
-
-    // 5. End the recording and build the Picture.
-    final ui.Picture picture = recorder.endRecording();
-
-    // 6. Convert the Picture to a ui.Image.
-    // This is an asynchronous operation.
-    final ui.Image image = await picture.toImage(width, height);
-
-    return image;
-  }
-
-/*
   Future<Bitmap> _loadAssetBitmap(String asset) async {
     final ByteData data = await rootBundle.load(asset);
     final imageDataBuffer = Uint8List.view(data.buffer);
@@ -298,5 +262,4 @@ class ImageLoader {
         return 5 / 3 * math.pi;
     }
   }
-*/
 }

@@ -1,4 +1,3 @@
-/*
 import 'dart:typed_data';
 
 import 'package:bitmap/bitmap.dart';
@@ -43,4 +42,3 @@ Future<Uint8List> resizeBitmap(List source) async {
 
   return returnBitmap.content;
 }
-*/
