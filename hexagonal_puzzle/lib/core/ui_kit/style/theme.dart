@@ -41,15 +41,15 @@ class AppThemeFactory {
       fontFamily: 'Lemon',
 
       textTheme: const TextTheme(
-        headline1: AppTypography.s24w400,
-        headline2: AppTypography.s24w400,
-        headline3: AppTypography.s24w400,
+        headlineSmall: AppTypography.s24w400,
+        headlineMedium: AppTypography.s24w400,
+        headlineLarge: AppTypography.s24w400,
 
-        subtitle1: AppTypography.s14w400,
-        subtitle2: AppTypography.s14w400,
+        titleSmall: AppTypography.s14w400,
+        titleMedium: AppTypography.s14w400,
 
-        bodyText1: AppTypography.s14w400,
-        bodyText2: AppTypography.s14w400,
+        bodySmall: AppTypography.s14w400,
+        bodyMedium: AppTypography.s14w400,
       )
     );
   }
