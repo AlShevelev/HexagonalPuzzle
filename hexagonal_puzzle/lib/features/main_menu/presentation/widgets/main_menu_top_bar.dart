@@ -45,11 +45,12 @@ class _MainMenuTopBarState extends State<MainMenuTopBar> {
 
     return Row(
       children: [
-        StrokedText(
-          text: tr('app_title'),
-          style: AppTypography.s24w400,
+        Expanded(
+          child: StrokedText(
+            text: tr('app_title'),
+            style: AppTypography.s24w400,
+          ),
         ),
-        const Spacer(),
         GestureDetector(
           onTap: () {
             setState(() {
