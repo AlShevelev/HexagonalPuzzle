@@ -357,6 +357,6 @@ class GameFieldCalculator {
   }
 
   int _getPiecesInRow(int pieces) {
-    return pieces + pieces ~/ 2;
+    return (pieces * 1.6).round();
   }
 }

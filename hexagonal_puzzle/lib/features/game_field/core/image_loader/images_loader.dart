@@ -15,11 +15,11 @@ import 'dto/game_field_hex.dart';
 import 'dto/game_field_model.dart';
 
 class ImageLoader {
-  Future<GameFieldModel> loadImages(String asset, Size canvasSize, int piecesInRow) async {
+  Future<GameFieldModel> loadImages(String asset, Size canvasSize, int piecesInCol) async {
     final assetImage = await _loadAssetImage(asset);
 
     final gameFieldCalculator = GameFieldCalculator();
-    final calculationResult = gameFieldCalculator.calculatePieces(canvasSize, piecesInRow);
+    final calculationResult = gameFieldCalculator.calculatePieces(canvasSize, piecesInCol);
 
     final resizedBitmap = await _resizeImage(assetImage!, calculationResult.gameFieldSize);
 
