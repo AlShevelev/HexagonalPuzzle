@@ -20,7 +20,13 @@ class AudioController {
 
   AudioController() {
     _musicPlayer = AudioPlayer(playerId: 'musicPlayer');
-    _sfxPlayer = AudioPlayer(playerId: 'soundPlayer');
+
+    _sfxPlayer = AudioPlayer(playerId: 'soundPlayer')
+      ..setAudioContext(
+        AudioContext(
+          android: const AudioContextAndroid(audioFocus: AndroidAudioFocus.none),
+        ),
+      );
 
     _tracksToPlay = allMusicTracks..shuffle();
 
@@ -68,10 +74,11 @@ class AudioController {
   }
 
   Future<void> initialize() async {
-    await AudioCache.instance.loadAll(SoundType.values.expand(soundTypeToFilename).map((path) => 'sounds/$path').toList());
+    await AudioCache.instance
+        .loadAll(SoundType.values.expand(soundTypeToFilename).map((path) => 'sounds/$path').toList());
   }
 
-  void playSound(SoundType type) {
+  Future<void> playSound(SoundType type) async {
     final muted = _settings?.soundsOn.value == false;
     if (muted) {
       return;
@@ -80,7 +87,7 @@ class AudioController {
     final options = soundTypeToFilename(type);
     final filename = options[Random().nextInt(options.length)];
 
-    _sfxPlayer.play(AssetSource('sounds/$filename'));
+    await _sfxPlayer.play(AssetSource('sounds/$filename'));
   }
 
   void stopSound() {
@@ -120,6 +127,9 @@ class AudioController {
       case AppLifecycleState.inactive:
         // No need to react to this state change.
         break;
+      case AppLifecycleState.hidden:
+        // No need to react to this state change.
+        break;
     }
   }
 
@@ -147,6 +157,8 @@ class AudioController {
         break;
       case PlayerState.completed:
         _playSongWithIndex(0);
+        break;
+      case PlayerState.disposed:
         break;
     }
   }
