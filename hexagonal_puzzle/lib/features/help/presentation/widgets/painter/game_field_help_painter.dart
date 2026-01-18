@@ -48,11 +48,13 @@ class GameFieldHelpPainter extends GameFieldPainter {
   void _paintRotateRight(Canvas canvas, Size size) {
     final cell = model.hexes[4];
 
+    final leftArrowPoint = cell.fixedCenter.translate(cell.points.rect.width / 4, 0);
     final rightArrowPoint = cell.fixedCenter.translate(cell.points.rect.width, 0);
+
     _paintArrow(
       canvas,
       size,
-      left: cell.fixedCenter.translate(cell.points.rect.width / 4, 0),
+      left: leftArrowPoint,
       right: rightArrowPoint,
       leftArrow: true,
       rightArrow: false,
@@ -62,21 +64,21 @@ class GameFieldHelpPainter extends GameFieldPainter {
       canvas,
       tr('help_clockwise'),
       size,
-      leftCenter: Offset(
-        rightArrowPoint.dx + size.width * 0.025,
-        cell.fixedCenter.dy,
-      ),
+      center: leftArrowPoint.translate(0, cell.points.rect.height / 3),
     );
   }
 
   void _paintRotateLeft(Canvas canvas, Size size) {
     final cell = model.hexes[10];
+
     final leftArrowPoint = cell.fixedCenter.translate(-cell.points.rect.width, 0);
+    final rightArrowPoint = cell.fixedCenter.translate(-cell.points.rect.width / 4, 0);
+
     _paintArrow(
       canvas,
       size,
       left: leftArrowPoint,
-      right: cell.fixedCenter.translate(-cell.points.rect.width / 4, 0),
+      right: rightArrowPoint,
       leftArrow: false,
       rightArrow: true,
     );
@@ -85,10 +87,7 @@ class GameFieldHelpPainter extends GameFieldPainter {
       canvas,
       tr('help_counterclockwise'),
       size,
-      rightCenter: Offset(
-        leftArrowPoint.dx - size.width * 0.025,
-        cell.fixedCenter.dy,
-      ),
+      center: rightArrowPoint.translate(0, cell.points.rect.height / 3),
     );
   }
 
